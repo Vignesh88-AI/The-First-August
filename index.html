@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kawaii Passcode Lock | Secret Diary</title>
+  <title>Happy Girlfriend Day 💕</title>
   
-  <!-- Google Fonts for cute typography -->
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&family=Fredoka:wght@400;500;600;700&family=Quicksand:wght@600;700&family=Short+Stack&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Quicksand:wght@600;700&family=Short+Stack&display=swap" rel="stylesheet">
   
   <link rel="stylesheet" href="style.css">
 </head>
@@ -18,90 +18,9 @@
   <div class="app-container">
     
     <!-- Left Panel: Constant Illustration -->
-    <div class="left-panel" id="left-panel">
-      
-      <!-- Seamless Background & Image Wrapper -->
+    <div class="left-panel">
       <div class="illustration-wrapper">
-        <!-- SVG Vector Fallback Illustration (Guarantees visual display out of the box) -->
-        <div class="svg-chick-container" id="svg-fallback">
-          <svg viewBox="0 0 500 650" class="chick-svg-art">
-            <!-- Background Plaid Grid overlay -->
-            <defs>
-              <pattern id="plaidPattern" width="60" height="60" patternUnits="userSpaceOnUse">
-                <rect width="60" height="60" fill="#e2ebdc"/>
-                <rect width="30" height="60" fill="#d0dfc8" opacity="0.5"/>
-                <rect width="60" height="30" fill="#c3d7ba" opacity="0.5"/>
-                <line x1="0" y1="15" x2="60" y2="15" stroke="#ffffff" stroke-width="2" opacity="0.7"/>
-                <line x1="15" y1="0" x2="15" y2="60" stroke="#ffffff" stroke-width="2" opacity="0.7"/>
-              </pattern>
-            </defs>
-            <rect width="100%" height="100%" fill="url(#plaidPattern)"/>
-            
-            <!-- Glitter Stars -->
-            <text x="70" y="80" font-size="28" fill="#e63973">★</text>
-            <text x="410" y="60" font-size="24" fill="#e63973">★</text>
-            <text x="430" y="240" font-size="26" fill="#e63973">★</text>
-            <text x="50" y="380" font-size="28" fill="#e63973">★</text>
-            <text x="420" y="460" font-size="25" fill="#e63973">★</text>
-            <text x="100" y="580" font-size="26" fill="#e63973">★</text>
-            <text x="320" y="600" font-size="24" fill="#e63973">★</text>
-
-            <!-- Center Oval Heart Badge -->
-            <g transform="translate(250, 325)">
-              <!-- Outer Brown Frame -->
-              <ellipse rx="150" ry="210" fill="#ffffff" stroke="#7a4b37" stroke-width="6"/>
-              
-              <!-- Pink Hearts Border Loop -->
-              <ellipse rx="138" ry="195" fill="none" stroke="#e8899e" stroke-width="8" stroke-dasharray="12, 10"/>
-              
-              <!-- Inner White Shield -->
-              <ellipse rx="126" ry="180" fill="#ffffff"/>
-              
-              <!-- Yellow Chick Body -->
-              <ellipse cx="0" cy="30" rx="90" ry="85" fill="#fce592"/>
-              <ellipse cx="0" cy="-30" rx="75" ry="70" fill="#fce592"/>
-              
-              <!-- Blush Cheeks -->
-              <ellipse cx="-45" cy="-25" rx="14" ry="9" fill="#ffaab8" opacity="0.8"/>
-              <ellipse cx="45" cy="-25" rx="14" ry="9" fill="#ffaab8" opacity="0.8"/>
-              
-              <!-- Cute Eyes -->
-              <circle cx="-30" cy="-35" r="5" fill="#54372b"/>
-              <circle cx="30" cy="-35" r="5" fill="#54372b"/>
-              
-              <!-- Orange Beak -->
-              <polygon points="-8,-28 8,-28 0,-20" fill="#f09236"/>
-              
-              <!-- Little Feet -->
-              <ellipse cx="-40" cy="100" rx="20" ry="12" fill="#f09236"/>
-              <ellipse cx="40" cy="100" rx="20" ry="12" fill="#f09236"/>
-
-              <!-- Flowers in Hands -->
-              <g transform="translate(35, 0)">
-                <!-- Stems -->
-                <path d="M -15,40 Q -5,10 10,-20" stroke="#689f38" stroke-width="4" fill="none"/>
-                <!-- Yellow Daisy -->
-                <circle cx="15" cy="-20" r="14" fill="#fbc02d"/>
-                <circle cx="15" cy="-20" r="6" fill="#e65100"/>
-                <!-- Pink Daisy -->
-                <circle cx="-5" cy="-5" r="14" fill="#f48fb1"/>
-                <circle cx="-5" cy="-5" r="6" fill="#f57f17"/>
-              </g>
-            </g>
-          </svg>
-        </div>
-
-        <!-- Main Image Element (Loaded if asset exists or chosen) -->
-        <img id="chick-image" class="hidden-img" alt="Kawaii Chick with Flowers">
-
-        <!-- Interactive Floating Glitter Stars Overlay -->
-        <div class="stars-overlay" id="stars-overlay"></div>
-
-        <!-- Optional Image Upload Control on Hover -->
-        <div class="upload-badge" id="upload-badge" title="Click to choose custom image file">
-          <span>📷 Select Image</span>
-          <input type="file" id="image-file-input" accept="image/*">
-        </div>
+        <img id="chick-image" src="assets/left_illustration.jpg" alt="Kawaii Chick with Flowers">
       </div>
     </div>
 
@@ -139,34 +58,27 @@
           <button class="key-btn action-key" data-val="#"><span class="key-label underline-text">#</span></button>
         </div>
 
-        <!-- Quick Hint -->
-        <div class="passcode-footer">
-          <p class="hint-text">💡 Passcode: <strong>1234</strong></p>
-        </div>
-
       </div>
     </div>
 
   </div>
 
-  <!-- Unlocked Secret Modal -->
+  <!-- Unlocked Message Modal -->
   <div class="modal-overlay hidden" id="secret-modal">
     <div class="secret-diary-card">
       <button class="close-modal-btn" id="close-modal-btn">&times;</button>
       <div class="diary-header">
-        <span class="diary-badge">✨ UNLOCKED ✨</span>
-        <h2>My Secret Kawaii Diary 💕</h2>
+        <span class="diary-badge">Happy Girlfriend Day</span>
+        <h2>A message just for you</h2>
         <p class="diary-date" id="current-date-string"></p>
       </div>
 
       <div class="diary-content">
-        <div class="chick-avatar">🐣</div>
-        <textarea id="diary-text" placeholder="Write your secret notes, dreams, and thoughts here..."></textarea>
+        <textarea id="diary-text" placeholder="Loading your special message..."></textarea>
       </div>
 
       <div class="diary-actions">
-        <button class="btn btn-save" id="save-diary-btn">💖 Save Note</button>
-        <button class="btn btn-lock" id="lock-app-btn">🔒 Lock Diary</button>
+        <button class="btn btn-lock" id="lock-app-btn">Close</button>
       </div>
     </div>
   </div>

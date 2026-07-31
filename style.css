@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Kawaii Passcode Lock & Secret Diary - Stylesheet
+   Girlfriend Day Passcode Webpage - Stylesheet
    ========================================================================== */
 
 /* CSS Reset & Base Styles */
@@ -28,7 +28,7 @@ html, body {
 }
 
 /* --------------------------------------------------------------------------
-   Left Panel: Constant Illustration
+   Left Panel: Illustration (constant, no overlays)
    -------------------------------------------------------------------------- */
 .left-panel {
   flex: 1;
@@ -40,7 +40,6 @@ html, body {
   position: relative;
   overflow: hidden;
   box-shadow: 4px 0 20px rgba(0, 0, 0, 0.15);
-  z-index: 2;
 }
 
 .illustration-wrapper {
@@ -58,92 +57,11 @@ html, body {
   object-fit: cover;
   object-position: center;
   display: block;
-  transition: transform 0.4s ease-out;
-}
-
-.illustration-wrapper img.hidden-img {
-  display: none;
+  transition: transform 0.5s ease-out;
 }
 
 .illustration-wrapper:hover img {
-  transform: scale(1.015);
-}
-
-/* SVG Chick Vector Container (Default Fallback) */
-.svg-chick-container {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: #e2ebdc;
-}
-
-.chick-svg-art {
-  width: 100%;
-  height: 100%;
-  max-width: 600px;
-  object-fit: contain;
-}
-
-/* Interactive Floating Sparkle Overlay */
-.stars-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  overflow: hidden;
-}
-
-.sparkle-star {
-  position: absolute;
-  font-size: 20px;
-  animation: floatSparkle 3s ease-in-out infinite alternate;
-  opacity: 0.8;
-  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
-}
-
-@keyframes floatSparkle {
-  0% { transform: translateY(0) scale(0.8) rotate(0deg); opacity: 0.5; }
-  100% { transform: translateY(-14px) scale(1.25) rotate(18deg); opacity: 1; }
-}
-
-/* Upload Badge Button on Hover */
-.upload-badge {
-  position: absolute;
-  bottom: 24px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(4px);
-  padding: 8px 18px;
-  border-radius: 20px;
-  font-size: 0.88rem;
-  font-weight: 600;
-  color: #d23861;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18);
-  cursor: pointer;
-  opacity: 0.3;
-  transition: all 0.3s ease;
-  z-index: 10;
-  overflow: hidden;
-}
-
-.left-panel:hover .upload-badge {
-  opacity: 1;
-  transform: translateX(-50%) translateY(-3px);
-}
-
-#image-file-input {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  opacity: 0;
-  cursor: pointer;
+  transform: scale(1.02);
 }
 
 /* --------------------------------------------------------------------------
@@ -159,7 +77,6 @@ html, body {
   align-items: center;
   padding: 2rem;
   position: relative;
-  z-index: 1;
 }
 
 .passcode-card {
@@ -216,14 +133,18 @@ html, body {
 }
 
 .slot.filled::after {
-  content: '💖';
-  font-size: 24px;
-  animation: heartPop 0.25s ease-out;
+  content: '';
+  width: 18px;
+  height: 18px;
+  background: #d23861;
+  border-radius: 50%;
+  display: block;
+  animation: dotPop 0.25s ease-out;
 }
 
-@keyframes heartPop {
+@keyframes dotPop {
   0% { transform: scale(0.2); opacity: 0; }
-  70% { transform: scale(1.25); }
+  70% { transform: scale(1.2); }
   100% { transform: scale(1); opacity: 1; }
 }
 
@@ -277,10 +198,10 @@ html, body {
 .key-btn:hover {
   transform: translateY(-3px) scale(1.05);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.22);
-  background: #ffffff;
 }
 
-.key-btn:active, .key-btn.btn-pressed {
+.key-btn:active,
+.key-btn.btn-pressed {
   transform: scale(0.92);
   box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
   background: #fff0f3;
@@ -294,7 +215,6 @@ html, body {
   line-height: 1;
 }
 
-/* Digit Underlines matching screenshot reference */
 .underline-text {
   text-decoration: underline;
   text-underline-offset: 4px;
@@ -306,30 +226,13 @@ html, body {
   font-size: 30px;
 }
 
-/* Footer Hint */
-.passcode-footer {
-  margin-top: 2rem;
-  color: rgba(255, 255, 255, 0.85);
-  font-size: 0.95rem;
-  text-align: center;
-}
-
-.hint-text {
-  background: rgba(0, 0, 0, 0.12);
-  padding: 6px 16px;
-  border-radius: 20px;
-  font-weight: 500;
-}
-
 /* --------------------------------------------------------------------------
-   Unlocked Secret Modal (Diary Window)
+   Unlocked Modal
    -------------------------------------------------------------------------- */
 .modal-overlay {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
   background: rgba(0, 0, 0, 0.55);
   backdrop-filter: blur(8px);
   display: flex;
@@ -364,8 +267,7 @@ html, body {
 
 .close-modal-btn {
   position: absolute;
-  top: 14px;
-  right: 18px;
+  top: 14px; right: 18px;
   background: transparent;
   border: none;
   font-size: 28px;
@@ -374,36 +276,36 @@ html, body {
   transition: color 0.2s;
 }
 
-.close-modal-btn:hover {
-  color: #d23861;
-}
+.close-modal-btn:hover { color: #d23861; }
 
 .diary-header {
   text-align: center;
-  margin-bottom: 1.2rem;
+  margin-bottom: 1.5rem;
 }
 
 .diary-badge {
   background: #ffb3c1;
   color: #800f2f;
-  font-size: 0.8rem;
+  font-size: 0.85rem;
   font-weight: 700;
-  padding: 4px 12px;
-  border-radius: 12px;
+  padding: 5px 16px;
+  border-radius: 20px;
   display: inline-block;
-  margin-bottom: 6px;
+  margin-bottom: 8px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
 }
 
 .diary-header h2 {
   color: #c42953;
   font-family: 'Short Stack', cursive, sans-serif;
-  font-size: 1.7rem;
+  font-size: 1.6rem;
 }
 
 .diary-date {
-  color: #888;
+  color: #999;
   font-size: 0.85rem;
-  margin-top: 4px;
+  margin-top: 6px;
 }
 
 .diary-content {
@@ -413,35 +315,22 @@ html, body {
   margin-bottom: 1.5rem;
 }
 
-.chick-avatar {
-  font-size: 48px;
-  margin-bottom: 8px;
-  animation: bounceAvatar 2s infinite;
-}
-
-@keyframes bounceAvatar {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-8px); }
-}
-
 #diary-text {
   width: 100%;
-  height: 140px;
-  border: 2px dashed #f7cad0;
+  height: 160px;
+  border: 2px solid #f7cad0;
   border-radius: 16px;
   background: #fff8f9;
-  padding: 14px;
+  padding: 16px;
   font-family: 'Short Stack', cursive, sans-serif;
   font-size: 1.05rem;
   color: #4a4a4a;
   outline: none;
   resize: none;
-  line-height: 1.5;
-}
-
-#diary-text:focus {
-  border-color: #d23861;
-  background: #ffffff;
+  line-height: 1.6;
+  user-select: text;
+  -webkit-user-select: text;
+  text-align: center;
 }
 
 .diary-actions {
@@ -451,39 +340,29 @@ html, body {
 }
 
 .btn {
-  padding: 10px 20px;
+  padding: 10px 30px;
   border-radius: 20px;
   border: none;
   font-family: 'Fredoka', sans-serif;
   font-weight: 600;
-  font-size: 0.95rem;
+  font-size: 1rem;
   cursor: pointer;
   transition: all 0.2s;
 }
 
-.btn-save {
+.btn-lock {
   background: #d23861;
   color: #ffffff;
   box-shadow: 0 4px 10px rgba(210, 56, 97, 0.3);
 }
 
-.btn-save:hover {
+.btn-lock:hover {
   background: #b82b50;
   transform: translateY(-2px);
 }
 
-.btn-lock {
-  background: #e9ecef;
-  color: #495057;
-}
-
-.btn-lock:hover {
-  background: #dee2e6;
-  transform: translateY(-2px);
-}
-
 /* --------------------------------------------------------------------------
-   Responsive Design for Mobile Screens
+   Responsive
    -------------------------------------------------------------------------- */
 @media (max-width: 820px) {
   .app-container {
@@ -492,43 +371,12 @@ html, body {
     min-height: 100vh;
     overflow-y: auto;
   }
-
-  .left-panel {
-    height: 45vh;
-    min-height: 300px;
-  }
-
-  .right-panel {
-    height: 55vh;
-    min-height: 450px;
-    padding: 1.5rem 1rem;
-  }
-
-  .passcode-title {
-    font-size: 1.8rem;
-    margin-bottom: 1.2rem;
-  }
-
-  .slots-container {
-    margin-bottom: 1.5rem;
-    gap: 12px;
-  }
-
-  .slot {
-    width: 50px;
-    height: 50px;
-  }
-
-  .keypad-grid {
-    gap: 14px 18px;
-  }
-
-  .key-btn {
-    width: 64px;
-    height: 64px;
-  }
-
-  .key-label {
-    font-size: 26px;
-  }
+  .left-panel { height: 45vh; min-height: 280px; }
+  .right-panel { height: 55vh; min-height: 450px; padding: 1.5rem 1rem; }
+  .passcode-title { font-size: 1.8rem; margin-bottom: 1.2rem; }
+  .slots-container { margin-bottom: 1.5rem; gap: 12px; }
+  .slot { width: 50px; height: 50px; }
+  .keypad-grid { gap: 14px 18px; }
+  .key-btn { width: 64px; height: 64px; }
+  .key-label { font-size: 26px; }
 }
