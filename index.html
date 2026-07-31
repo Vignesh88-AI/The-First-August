@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Enter a Passcode | Kawaii Portal</title>
-  <!-- Google Fonts: Fredoka for rounded bubble text, Quicksand for clean UI -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
@@ -18,7 +17,6 @@
       
       <!-- LEFT SIDE: Soft Green Gingham Background with Oval Chick Frame & Scattered Pink Stars -->
       <div class="left-side">
-        <!-- Scattered Floating Pink Stars -->
         <div class="pink-star star-1">★</div>
         <div class="pink-star star-2">✦</div>
         <div class="pink-star star-3">★</div>
@@ -30,19 +28,16 @@
 
         <!-- Central Oval Container -->
         <div class="oval-container">
-          
-          <!-- Continuous Circle of Small Pink Hearts -->
           <div class="hearts-ring" id="heartsRing"></div>
-
-          <!-- White Oval Frame -->
           <div class="white-oval-frame">
+            <!-- Image loaded via JS from raw GitHub URL -->
             <img src="cute_chick_flowers.png" 
                  alt="Cute Kawaii Chick with Flower Bouquet" 
                  class="chick-image" 
                  id="chickImg"
-                 onerror="this.style.display='none'; document.getElementById('chickSvgFallback').style.display='block';">
+                 onerror="this.onerror=null; this.style.display='none'; document.getElementById('chickSvgFallback').style.display='block';">
             
-            <!-- Crisp SVG Vector Fallback -->
+            <!-- SVG Fallback -->
             <svg id="chickSvgFallback" class="chick-svg-fallback" viewBox="0 0 300 300" style="display:none;" aria-label="Cute Chick Holding Flowers">
               <g transform="translate(0, 5)">
                 <ellipse cx="120" cy="265" rx="16" ry="8" fill="#ff9e3b" />
@@ -88,7 +83,6 @@
       <div class="right-side">
         <h1 class="passcode-title">Enter a passcode</h1>
 
-        <!-- 4 Empty White Rounded Square Boxes -->
         <div class="passcode-boxes" id="passcodeBoxes">
           <div class="pin-box" data-index="0"></div>
           <div class="pin-box" data-index="1"></div>
@@ -96,20 +90,16 @@
           <div class="pin-box" data-index="3"></div>
         </div>
 
-        <!-- Classic Phone-Style Number Pad (White Circular Raised Buttons) -->
         <div class="keypad-grid" id="keypadGrid">
           <button class="key-btn" data-val="1">1</button>
           <button class="key-btn" data-val="2">2</button>
           <button class="key-btn" data-val="3">3</button>
-          
           <button class="key-btn" data-val="4">4</button>
           <button class="key-btn" data-val="5">5</button>
           <button class="key-btn" data-val="6">6</button>
-          
           <button class="key-btn" data-val="7">7</button>
           <button class="key-btn" data-val="8">8</button>
           <button class="key-btn" data-val="9">9</button>
-          
           <button class="key-btn symbol-btn" data-val="*">*</button>
           <button class="key-btn" data-val="0">0</button>
           <button class="key-btn symbol-btn" data-val="#">#</button>
@@ -119,7 +109,7 @@
     </div>
   </div>
 
-  <!-- SUCCESS UNLOCKED CELEBRATION MODAL -->
+  <!-- SUCCESS MODAL -->
   <div class="modal-overlay hidden" id="successModal">
     <div class="modal-card">
       <div class="modal-icon">💖</div>
@@ -130,5 +120,31 @@
   </div>
 
   <script src="script.js"></script>
+  <script>
+    // Try to load the generated chick image from GitHub raw URL
+    (function() {
+      const img = document.getElementById('chickImg');
+      const svgFallback = document.getElementById('chickSvgFallback');
+      const paths = [
+        'cute_chick_flowers.png',
+        'https://raw.githubusercontent.com/Vignesh88-AI/The-First-August/main/cute_chick_flowers.png'
+      ];
+      function tryLoad(idx) {
+        if (idx >= paths.length) {
+          if (img) img.style.display = 'none';
+          if (svgFallback) svgFallback.style.display = 'block';
+          return;
+        }
+        const t = new Image();
+        t.onload = function() {
+          if (img) { img.src = paths[idx]; img.style.display = 'block'; }
+          if (svgFallback) svgFallback.style.display = 'none';
+        };
+        t.onerror = function() { tryLoad(idx + 1); };
+        t.src = paths[idx];
+      }
+      tryLoad(0);
+    })();
+  </script>
 </body>
 </html>

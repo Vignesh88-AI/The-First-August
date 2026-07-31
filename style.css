@@ -1,5 +1,5 @@
 /* ==========================================================================
-   KAWAII PASSCODE LOCK SCREEN - STYLESHEET
+   KAWAII PASSCODE LOCK SCREEN - FULLSCREEN STYLESHEET
    ========================================================================== */
 
 * {
@@ -12,62 +12,51 @@
 
 :root {
   --bright-pink: #e02b5a;
-  --pink-dark-shadow: #b31b42;
   --gingham-mint: #d6f4dc;
   --gingham-check: rgba(158, 228, 178, 0.5);
   --font-bubble: 'Fredoka', 'Quicksand', cursive, sans-serif;
   --font-ui: 'Quicksand', sans-serif;
 }
 
-body {
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
   font-family: var(--font-bubble);
-  background-color: #27282d;
-  background-image: radial-gradient(circle at 50% 50%, #32343c 0%, #1f2024 100%);
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 24px;
-  overflow-x: hidden;
 }
 
 .hidden {
   display: none !important;
 }
 
-/* MAIN LOCK SCREEN WRAPPER */
+/* FULLSCREEN WRAPPER */
 .lock-screen-wrapper {
-  width: 100%;
-  max-width: 900px;
+  width: 100vw;
+  height: 100vh;
   display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
-/* MAIN SPLIT CARD (50/50) */
+/* FULLSCREEN SPLIT CARD */
 .lock-card {
   width: 100%;
-  max-width: 860px;
-  height: 520px;
+  height: 100%;
   display: flex;
-  background: #ffffff;
-  border-radius: 30px;
   overflow: hidden;
-  box-shadow: 0 25px 55px rgba(0, 0, 0, 0.45), 0 0 0 6px #ffffff;
-  position: relative;
 }
 
 /* ==========================================================================
-   LEFT SIDE: SOFT GREEN GINGHAM & KAWAII OVAL FRAME
+   LEFT SIDE: SOFT GREEN GINGHAM & OVAL FRAME
    ========================================================================== */
 .left-side {
   width: 50%;
   height: 100%;
   background-color: var(--gingham-mint);
-  background-image: 
+  background-image:
     linear-gradient(90deg, var(--gingham-check) 50%, transparent 50%),
     linear-gradient(var(--gingham-check) 50%, transparent 50%);
-  background-size: 34px 34px;
+  background-size: 38px 38px;
   position: relative;
   display: flex;
   align-items: center;
@@ -79,39 +68,38 @@ body {
 .pink-star {
   position: absolute;
   color: #ff5592;
-  font-size: 1.5rem;
-  filter: drop-shadow(0 2px 5px rgba(255, 85, 146, 0.4));
+  font-size: 1.6rem;
+  filter: drop-shadow(0 2px 5px rgba(255, 85, 146, 0.45));
   animation: floatStar 3.2s ease-in-out infinite alternate;
   pointer-events: none;
   z-index: 3;
 }
-
-.star-1 { top: 12%; left: 14%; font-size: 1.7rem; animation-delay: 0s; }
-.star-2 { top: 18%; right: 10%; font-size: 1.3rem; animation-delay: 0.6s; }
-.star-3 { top: 44%; right: 6%; font-size: 1.5rem; animation-delay: 1.2s; }
-.star-4 { bottom: 14%; left: 10%; font-size: 1.4rem; animation-delay: 1.8s; }
-.star-5 { bottom: 18%; right: 14%; font-size: 1.7rem; animation-delay: 0.9s; }
-.star-6 { top: 78%; left: 22%; font-size: 1.2rem; animation-delay: 1.4s; }
-.star-7 { top: 8%; right: 28%; font-size: 1.4rem; animation-delay: 0.3s; }
-.star-8 { top: 50%; left: 7%; font-size: 1.3rem; animation-delay: 2.1s; }
+.star-1 { top: 10%; left: 12%; font-size: 2rem; animation-delay: 0s; }
+.star-2 { top: 16%; right: 9%; font-size: 1.5rem; animation-delay: 0.6s; }
+.star-3 { top: 42%; right: 7%; font-size: 1.7rem; animation-delay: 1.2s; }
+.star-4 { bottom: 12%; left: 9%; font-size: 1.6rem; animation-delay: 1.8s; }
+.star-5 { bottom: 16%; right: 13%; font-size: 1.9rem; animation-delay: 0.9s; }
+.star-6 { top: 76%; left: 20%; font-size: 1.4rem; animation-delay: 1.4s; }
+.star-7 { top: 7%; right: 26%; font-size: 1.6rem; animation-delay: 0.3s; }
+.star-8 { top: 48%; left: 6%; font-size: 1.5rem; animation-delay: 2.1s; }
 
 @keyframes floatStar {
   0% { transform: translateY(0) scale(1) rotate(0deg); }
-  100% { transform: translateY(-7px) scale(1.16) rotate(14deg); }
+  100% { transform: translateY(-8px) scale(1.18) rotate(15deg); }
 }
 
 /* CENTRAL OVAL CONTAINER */
 .oval-container {
   position: relative;
-  width: 255px;
-  height: 340px;
+  width: clamp(220px, 28vh, 320px);
+  height: clamp(290px, 38vh, 430px);
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 5;
 }
 
-/* CONTINUOUS CIRCLE OF SMALL PINK HEARTS */
+/* PINK HEARTS RING */
 .hearts-ring {
   position: absolute;
   top: -14px;
@@ -124,33 +112,32 @@ body {
 
 .pink-heart-item {
   position: absolute;
-  font-size: 1rem;
+  font-size: clamp(0.85rem, 1.2vh, 1.1rem);
   line-height: 1;
   filter: drop-shadow(0 2px 4px rgba(224, 43, 90, 0.35));
-  transition: transform 0.2s ease;
 }
 
-/* LARGE WHITE OVAL FRAME */
+/* WHITE OVAL FRAME */
 .white-oval-frame {
-  width: 235px;
-  height: 320px;
+  width: 100%;
+  height: 100%;
   background: #ffffff;
   border-radius: 50% / 50%;
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12), inset 0 0 20px rgba(0, 0, 0, 0.02);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.14), inset 0 0 20px rgba(0, 0, 0, 0.02);
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  padding: 16px;
-  border: 5px solid #ffffff;
+  padding: 18px;
+  border: 6px solid #ffffff;
   position: relative;
 }
 
 .chick-image {
-  width: 88%;
-  height: 88%;
+  width: 92%;
+  height: 92%;
   object-fit: contain;
-  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.08));
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.08));
 }
 
 .chick-svg-fallback {
@@ -160,7 +147,7 @@ body {
 }
 
 /* ==========================================================================
-   RIGHT SIDE: SOLID BRIGHT PINK/MAGENTA BACKGROUND & KEYPAD
+   RIGHT SIDE: BRIGHT PINK BACKGROUND & KEYPAD
    ========================================================================== */
 .right-side {
   width: 50%;
@@ -170,33 +157,32 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 35px 25px;
+  padding: 5vh 4vw;
   position: relative;
 }
 
 .passcode-title {
   color: #ffffff;
   font-family: var(--font-bubble);
-  font-size: 2.15rem;
+  font-size: clamp(1.6rem, 3vw, 3rem);
   font-weight: 700;
-  margin-bottom: 22px;
-  letter-spacing: 0.3px;
+  margin-bottom: clamp(16px, 2.5vh, 30px);
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.12);
   text-align: center;
 }
 
-/* 4 EMPTY WHITE ROUNDED SQUARE BOXES */
+/* PIN BOXES */
 .passcode-boxes {
   display: flex;
-  gap: 14px;
-  margin-bottom: 28px;
+  gap: clamp(10px, 1.5vw, 18px);
+  margin-bottom: clamp(18px, 3vh, 36px);
 }
 
 .pin-box {
-  width: 52px;
-  height: 52px;
+  width: clamp(44px, 5.5vw, 68px);
+  height: clamp(44px, 5.5vw, 68px);
   background: #ffffff;
-  border-radius: 14px;
+  border-radius: 16px;
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.16);
   display: flex;
   align-items: center;
@@ -208,12 +194,12 @@ body {
 .pin-box.filled::after {
   content: '●';
   color: var(--bright-pink);
-  font-size: 1.5rem;
+  font-size: clamp(1.3rem, 2vw, 1.8rem);
   animation: popIn 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .pin-box.filled {
-  transform: scale(1.06);
+  transform: scale(1.07);
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.22);
 }
 
@@ -222,56 +208,53 @@ body {
   100% { transform: scale(1); opacity: 1; }
 }
 
-/* CLASSIC PHONE-STYLE NUMBER PAD */
+/* KEYPAD GRID */
 .keypad-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 16px 22px;
+  gap: clamp(10px, 2vh, 22px) clamp(14px, 2vw, 28px);
   width: 100%;
-  max-width: 275px;
+  max-width: clamp(220px, 30vw, 380px);
 }
 
-/* WHITE CIRCULAR BUTTONS WITH SOFT SHADOW & RAISED FEEL */
+/* CIRCULAR BUTTONS - RAISED */
 .key-btn {
-  width: 65px;
-  height: 65px;
+  width: clamp(56px, 6vw, 78px);
+  height: clamp(56px, 6vw, 78px);
   border-radius: 50%;
   background: #ffffff;
   border: none;
   color: var(--bright-pink);
   font-family: var(--font-bubble);
-  font-size: 1.75rem;
+  font-size: clamp(1.4rem, 2vw, 2.2rem);
   font-weight: 700;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.18), inset 0 -3px 0 rgba(0, 0, 0, 0.08);
-  transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.12s ease;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.18), inset 0 -3px 0 rgba(0, 0, 0, 0.09);
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
   margin: 0 auto;
   outline: none;
   -webkit-tap-highlight-color: transparent;
 }
 
 .key-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.24), inset 0 -3px 0 rgba(0, 0, 0, 0.08);
+  transform: translateY(-2px) scale(1.04);
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.24), inset 0 -3px 0 rgba(0, 0, 0, 0.09);
 }
 
 .key-btn:active {
-  transform: translateY(2px) scale(0.95);
+  transform: translateY(2px) scale(0.96);
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15), inset 0 1px 2px rgba(0, 0, 0, 0.12);
 }
 
 /* ==========================================================================
-   MODAL DIALOG (SUCCESS CELEBRATION)
+   MODAL
    ========================================================================== */
 .modal-overlay {
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  top: 0; left: 0; right: 0; bottom: 0;
   background: rgba(0, 0, 0, 0.65);
   backdrop-filter: blur(6px);
   display: flex;
@@ -297,105 +280,28 @@ body {
   100% { transform: scale(1); opacity: 1; }
 }
 
-.modal-icon {
-  font-size: 3.5rem;
-  margin-bottom: 12px;
-}
-
-.modal-card h2 {
-  color: var(--bright-pink);
-  font-size: 1.8rem;
-  margin-bottom: 10px;
-}
-
-.modal-card p {
-  color: #4a5568;
-  font-family: var(--font-ui);
-  font-size: 1.05rem;
-  margin-bottom: 24px;
-  line-height: 1.5;
-}
-
+.modal-icon { font-size: 3.5rem; margin-bottom: 12px; }
+.modal-card h2 { color: var(--bright-pink); font-size: 1.8rem; margin-bottom: 10px; }
+.modal-card p { color: #4a5568; font-family: var(--font-ui); font-size: 1.05rem; margin-bottom: 24px; line-height: 1.5; }
 .modal-btn {
-  background: var(--bright-pink);
-  color: #ffffff;
-  border: none;
-  padding: 14px 28px;
-  border-radius: 30px;
-  font-family: var(--font-bubble);
-  font-size: 1.1rem;
-  font-weight: 700;
-  cursor: pointer;
-  box-shadow: 0 6px 18px rgba(224, 43, 90, 0.35);
+  background: var(--bright-pink); color: #fff; border: none;
+  padding: 14px 28px; border-radius: 30px;
+  font-family: var(--font-bubble); font-size: 1.1rem; font-weight: 700;
+  cursor: pointer; box-shadow: 0 6px 18px rgba(224, 43, 90, 0.35);
   transition: transform 0.15s ease, background 0.15s ease;
 }
-
-.modal-btn:hover {
-  transform: scale(1.05);
-  background: #c7224c;
-}
+.modal-btn:hover { transform: scale(1.05); background: #c7224c; }
 
 /* ==========================================================================
-   RESPONSIVE LAYOUT FOR MOBILE DEVICES
+   MOBILE RESPONSIVE
    ========================================================================== */
 @media (max-width: 768px) {
-  body {
-    padding: 12px;
-  }
-
-  .lock-card {
-    flex-direction: column;
-    height: auto;
-    max-width: 400px;
-    border-radius: 26px;
-  }
-
-  .left-side {
-    width: 100%;
-    height: 270px;
-    padding: 20px;
-  }
-
-  .right-side {
-    width: 100%;
-    height: auto;
-    padding: 28px 20px 32px 20px;
-  }
-
-  .oval-container {
-    width: 190px;
-    height: 250px;
-  }
-
-  .white-oval-frame {
-    width: 175px;
-    height: 235px;
-  }
-
-  .passcode-title {
-    font-size: 1.8rem;
-    margin-bottom: 16px;
-  }
-
-  .passcode-boxes {
-    gap: 12px;
-    margin-bottom: 22px;
-  }
-
-  .pin-box {
-    width: 46px;
-    height: 46px;
-    border-radius: 12px;
-  }
-
-  .keypad-grid {
-    gap: 12px 18px;
-    max-width: 240px;
-  }
-
-  .key-btn {
-    width: 58px;
-    height: 58px;
-    font-size: 1.5rem;
-  }
+  html, body { overflow-y: auto; }
+  .lock-screen-wrapper { height: auto; min-height: 100vh; flex-direction: column; }
+  .lock-card { flex-direction: column; height: auto; min-height: 100vh; }
+  .left-side { width: 100%; height: 50vw; min-height: 240px; }
+  .right-side { width: 100%; height: auto; flex: 1; padding: 5vw 4vw 8vw; }
+  .oval-container { width: 36vw; height: 48vw; max-width: 190px; max-height: 255px; }
+  .passcode-title { font-size: clamp(1.4rem, 6vw, 2rem); }
+  .keypad-grid { max-width: 56vw; }
 }
