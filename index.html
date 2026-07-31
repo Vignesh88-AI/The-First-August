@@ -6,7 +6,7 @@
   <title>Enter a Passcode 💕</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Quicksand:wght@600;700&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after {
       box-sizing: border-box;
@@ -19,11 +19,11 @@
       width: 100%;
       height: 100%;
       overflow: hidden;
-      font-family: 'Fredoka', cursive;
+      font-family: 'Fredoka', 'Quicksand', cursive, sans-serif;
       background: #d6f4dc;
     }
 
-    /* ======================== FULLSCREEN SPLIT ======================== */
+    /* ======================== FULLSCREEN SPLIT (50/50) ======================== */
     .wrapper {
       display: flex;
       width: 100vw;
@@ -43,21 +43,21 @@
       background-image:
         linear-gradient(90deg, rgba(145, 214, 160, 0.48) 50%, transparent 50%),
         linear-gradient(rgba(145, 214, 160, 0.48) 50%, transparent 50%);
-      background-size: 38px 38px;
+      background-size: 36px 36px;
     }
 
-    /* Pink floating stars */
+    /* Pink floating glitter stars */
     .star {
       position: absolute;
       color: #ff5592;
       font-size: 1.6rem;
-      filter: drop-shadow(0 1px 4px rgba(255,85,146,0.45));
+      filter: drop-shadow(0 2px 5px rgba(255, 85, 146, 0.45));
       pointer-events: none;
-      animation: floatStar 3s ease-in-out infinite alternate;
+      animation: floatStar 3.2s ease-in-out infinite alternate;
       z-index: 2;
     }
     .s1 { top:8%;  left:10%;  font-size:2.2rem; animation-delay:0s;   }
-    .s2 { top:14%; right:8%;  font-size:1.5rem; animation-delay:.5s;  }
+    .s2 { top:13%; right:8%;  font-size:1.5rem; animation-delay:.5s;  }
     .s3 { top:42%; right:5%;  font-size:1.9rem; animation-delay:1s;   }
     .s4 { bottom:10%; left:8%; font-size:1.7rem; animation-delay:1.5s; }
     .s5 { bottom:12%; right:11%; font-size:2.1rem; animation-delay:.8s;  }
@@ -73,50 +73,51 @@
     /* ======================== OVAL FRAME & HEARTS RING ======================== */
     .oval-wrap {
       position: relative;
-      width: clamp(260px, 32vh, 380px);
-      height: clamp(340px, 45vh, 500px);
+      width: clamp(270px, 34vh, 390px);
+      height: clamp(350px, 46vh, 510px);
       display: flex;
       align-items: center;
       justify-content: center;
       z-index: 5;
-      transition: transform 0.3s ease;
+      transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
     .oval-wrap:hover {
-      transform: scale(1.02);
+      transform: scale(1.025);
     }
 
+    /* Continuous Ring of 32 Small Pink Hearts */
     .hearts-ring {
       position: absolute;
-      inset: -18px;
+      inset: -20px;
       pointer-events: none;
       z-index: 10;
     }
 
     .heart-dot {
       position: absolute;
-      font-size: clamp(0.9rem, 1.3vh, 1.25rem);
+      font-size: clamp(0.95rem, 1.35vh, 1.3rem);
       line-height: 1;
-      filter: drop-shadow(0 2px 4px rgba(220, 30, 80, 0.45));
-      animation: pulseHeart 2.5s ease-in-out infinite alternate;
+      filter: drop-shadow(0 2px 5px rgba(224, 43, 90, 0.45));
+      animation: pulseHeart 2.4s ease-in-out infinite alternate;
     }
 
     @keyframes pulseHeart {
       0% { transform: translate(-50%, -50%) rotate(var(--rot)) scale(1); }
-      100% { transform: translate(-50%, -50%) rotate(var(--rot)) scale(1.15); }
+      100% { transform: translate(-50%, -50%) rotate(var(--rot)) scale(1.18); }
     }
 
-    /* White Oval Frame */
+    /* Premium White Oval Frame */
     .oval {
       width: 100%;
       height: 100%;
       border-radius: 50% / 50%;
       background: #ffffff;
       box-shadow: 
-        0 22px 55px rgba(0, 0, 0, 0.16),
-        inset 0 0 20px rgba(0, 0, 0, 0.02),
-        0 0 0 10px rgba(255, 255, 255, 0.85),
-        0 0 30px rgba(224, 43, 90, 0.28);
-      border: 8px solid #ffffff;
+        0 25px 60px rgba(0, 0, 0, 0.18),
+        inset 0 0 22px rgba(0, 0, 0, 0.02),
+        0 0 0 10px rgba(255, 255, 255, 0.9),
+        0 0 35px rgba(224, 43, 90, 0.32);
+      border: 10px solid #ffffff;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -125,16 +126,14 @@
       position: relative;
     }
 
-    /* Generated Chick Image */
-    .chick-img {
-      width: 92%;
-      height: 92%;
-      object-fit: contain;
-      filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.1));
-      border-radius: 50%;
+    /* Kawaii Chick Illustration SVG */
+    .chick-svg {
+      width: 94%;
+      height: 94%;
+      filter: drop-shadow(0 6px 16px rgba(0, 0, 0, 0.08));
     }
 
-    /* ======================== RIGHT: PINK SIDE ======================== */
+    /* ======================== RIGHT: SOLID PINK SIDE ======================== */
     .right {
       width: 50%;
       height: 100%;
@@ -145,26 +144,39 @@
       justify-content: center;
       padding: 5vh 4vw;
       gap: clamp(16px, 2.8vh, 32px);
+      position: relative;
     }
 
+    /* Title at top in white bold text */
     .title {
       color: #ffffff;
-      font-size: clamp(1.6rem, 3vw, 3rem);
+      font-size: clamp(1.8rem, 3.2vw, 3.2rem);
       font-weight: 700;
       text-align: center;
-      text-shadow: 0 2px 6px rgba(0,0,0,.12);
+      text-shadow: 0 2px 6px rgba(0,0,0,.15);
       letter-spacing: .3px;
     }
 
-    /* 4 PIN boxes */
+    /* 4 Empty White Rounded Square Boxes */
     .pin-row {
       display: flex;
       gap: clamp(10px, 1.4vw, 18px);
+      position: relative;
+    }
+
+    .pin-row.shake {
+      animation: shakeX 0.4s ease-in-out;
+    }
+
+    @keyframes shakeX {
+      0%, 100% { transform: translateX(0); }
+      20%, 60% { transform: translateX(-12px); }
+      40%, 80% { transform: translateX(12px); }
     }
 
     .pin-box {
-      width: clamp(46px, 5.8vw, 68px);
-      height: clamp(46px, 5.8vw, 68px);
+      width: clamp(48px, 6vw, 70px);
+      height: clamp(48px, 6vw, 70px);
       background: #ffffff;
       border-radius: 16px;
       box-shadow: 0 4px 14px rgba(0, 0, 0, 0.16);
@@ -176,12 +188,12 @@
     }
     .pin-box.filled {
       transform: scale(1.08);
-      box-shadow: 0 6px 20px rgba(0,0,0,.22);
+      box-shadow: 0 6px 20px rgba(0,0,0,.24);
     }
     .pin-box.filled::after {
       content: '●';
       color: #e02b5a;
-      font-size: clamp(1.2rem, 2vw, 1.7rem);
+      font-size: clamp(1.3rem, 2.2vw, 1.8rem);
       animation: pop .2s cubic-bezier(.175,.885,.32,1.275);
     }
     @keyframes pop {
@@ -189,24 +201,46 @@
       100% { transform: scale(1); opacity: 1; }
     }
 
-    /* Keypad */
+    /* Error Toast */
+    .error-toast {
+      position: absolute;
+      top: -36px;
+      left: 50%;
+      transform: translateX(-50%) translateY(-5px);
+      background: rgba(0, 0, 0, 0.75);
+      color: #ffffff;
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      white-space: nowrap;
+      opacity: 0;
+      transition: all 0.25s ease;
+      pointer-events: none;
+    }
+    .error-toast.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    /* Classic Phone-Style Number Pad (White Circular Raised Buttons) */
     .keypad {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: clamp(10px, 2vh, 22px) clamp(12px, 1.8vw, 26px);
       width: 100%;
-      max-width: clamp(210px, 28vw, 360px);
+      max-width: clamp(220px, 29vw, 370px);
     }
 
     .key {
-      width: clamp(56px, 6.2vw, 78px);
-      height: clamp(56px, 6.2vw, 78px);
+      width: clamp(58px, 6.4vw, 80px);
+      height: clamp(58px, 6.4vw, 80px);
       border-radius: 50%;
       background: #ffffff;
       border: none;
       color: #e02b5a;
       font-family: 'Fredoka', cursive;
-      font-size: clamp(1.4rem, 2.1vw, 2.2rem);
+      font-size: clamp(1.5rem, 2.2vw, 2.3rem);
       font-weight: 700;
       cursor: pointer;
       display: flex;
@@ -220,6 +254,17 @@
     }
     .key:hover  { transform: translateY(-2px) scale(1.05); box-shadow: 0 10px 22px rgba(0,0,0,.24), inset 0 -3px 0 rgba(0,0,0,.09); }
     .key:active { transform: translateY(2px) scale(.96);   box-shadow: 0 2px 6px rgba(0,0,0,.15), inset 0 1px 2px rgba(0,0,0,.12); }
+
+    /* Hint bar */
+    .hint-bar {
+      margin-top: 5px;
+    }
+    .hint-text {
+      color: rgba(255, 255, 255, 0.85);
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-align: center;
+    }
 
     /* ======================== MODAL ======================== */
     .modal-bg {
@@ -256,9 +301,9 @@
     @media (max-width: 700px) {
       html, body { overflow-y: auto; }
       .wrapper { flex-direction: column; height: auto; min-height: 100vh; }
-      .left  { width: 100%; height: 60vw; min-height: 260px; }
+      .left  { width: 100%; height: 62vw; min-height: 270px; }
       .right { width: 100%; height: auto; flex: 1; padding: 6vw 5vw 10vw; }
-      .oval-wrap { width: 44vw; height: 58vw; max-width: 220px; max-height: 290px; }
+      .oval-wrap { width: 44vw; height: 58vw; max-width: 230px; max-height: 300px; }
     }
   </style>
 </head>
@@ -278,45 +323,191 @@
     <span class="star s7">★</span>
     <span class="star s8">✦</span>
 
-    <!-- Oval frame with hearts ring -->
+    <!-- Oval frame with 32 pink hearts ring -->
     <div class="oval-wrap">
       <div class="hearts-ring" id="heartsRing"></div>
       <div class="oval">
-        <!-- Generated Kawaii Chick Holding Flowers Image -->
-        <img id="chickImg" 
-             class="chick-img" 
-             src="cute_chick_flowers.png" 
-             alt="Cute Kawaii Chick Holding Flowers">
+        <!-- Cute Kawaii Chick Holding Bouquet Illustration -->
+        <svg class="chick-svg" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" aria-label="Cute Yellow Kawaii Chick Holding Flower Bouquet">
+          <defs>
+            <!-- Chick body gradient -->
+            <radialGradient id="chickGrad" cx="40%" cy="35%" r="65%">
+              <stop offset="0%" stop-color="#fff8cd"/>
+              <stop offset="60%" stop-color="#ffe678"/>
+              <stop offset="100%" stop-color="#ffd54f"/>
+            </radialGradient>
+            <!-- Daisy center gradient -->
+            <radialGradient id="centerGrad" cx="35%" cy="35%" r="60%">
+              <stop offset="0%" stop-color="#fff176"/>
+              <stop offset="70%" stop-color="#fbc02d"/>
+              <stop offset="100%" stop-color="#f57f17"/>
+            </radialGradient>
+            <!-- Leaf gradient -->
+            <linearGradient id="leafGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#81c784"/>
+              <stop offset="100%" stop-color="#388e3c"/>
+            </linearGradient>
+          </defs>
+
+          <!-- Soft floor shadow -->
+          <ellipse cx="200" cy="360" rx="90" ry="16" fill="rgba(0,0,0,0.08)"/>
+
+          <!-- Feet -->
+          <ellipse cx="166" cy="346" rx="22" ry="11" fill="#ff9800"/>
+          <ellipse cx="234" cy="346" rx="22" ry="11" fill="#ff9800"/>
+          <path d="M152,346 L159,337 M166,344 L166,335 M180,346 L173,337" stroke="#e65100" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M220,346 L227,337 M234,344 L234,335 M248,346 L241,337" stroke="#e65100" stroke-width="2.5" stroke-linecap="round"/>
+
+          <!-- Body -->
+          <ellipse cx="200" cy="220" rx="122" ry="130" fill="url(#chickGrad)" stroke="#6d4c41" stroke-width="4"/>
+          <!-- Body sheen -->
+          <ellipse cx="168" cy="160" rx="42" ry="30" fill="rgba(255,255,255,0.45)" transform="rotate(-20,168,160)"/>
+
+          <!-- Feather crest on head -->
+          <path d="M188,96 C188,68 200,60 200,60 C200,60 212,68 212,96" fill="#ffe082" stroke="#6d4c41" stroke-width="3.5"/>
+          <path d="M176,102 C176,78 186,72 186,72 C186,72 196,80 196,104" fill="#ffe082" stroke="#6d4c41" stroke-width="3"/>
+          <path d="M204,104 C204,80 214,72 214,72 C214,72 224,78 224,102" fill="#ffe082" stroke="#6d4c41" stroke-width="3"/>
+
+          <!-- Eyes (Big glossy Sanrio style) -->
+          <ellipse cx="168" cy="154" rx="15" ry="17" fill="#2d1e18"/>
+          <ellipse cx="232" cy="154" rx="15" ry="17" fill="#2d1e18"/>
+          <!-- Eye highlights -->
+          <circle cx="174" cy="147" r="5.5" fill="#ffffff"/>
+          <circle cx="238" cy="147" r="5.5" fill="#ffffff"/>
+          <circle cx="162" cy="157" r="2.8" fill="#ffffff"/>
+          <circle cx="226" cy="157" r="2.8" fill="#ffffff"/>
+
+          <!-- Pink blush cheeks -->
+          <ellipse cx="140" cy="174" rx="19" ry="12" fill="#ff80ab" opacity="0.75"/>
+          <ellipse cx="260" cy="174" rx="19" ry="12" fill="#ff80ab" opacity="0.75"/>
+
+          <!-- Orange Beak -->
+          <path d="M186,168 Q200,190 214,168 Q207,177 200,179 Q193,177 186,168 Z" fill="#ff9800" stroke="#6d4c41" stroke-width="3.5"/>
+          <path d="M191,171 Q200,169 209,171" stroke="rgba(255,255,255,0.6)" stroke-width="2" fill="none" stroke-linecap="round"/>
+
+          <!-- Wings holding bouquet -->
+          <ellipse cx="104" cy="245" rx="32" ry="46" fill="#ffe082" stroke="#6d4c41" stroke-width="3.5" transform="rotate(-28,104,245)"/>
+          <ellipse cx="296" cy="245" rx="32" ry="46" fill="#ffe082" stroke="#6d4c41" stroke-width="3.5" transform="rotate(28,296,245)"/>
+
+          <!-- BOUQUET: Stems -->
+          <g stroke="#2e7d32" stroke-width="5" stroke-linecap="round" fill="none">
+            <path d="M200,290 L170,325 L158,342"/>
+            <path d="M200,290 L200,332 L200,344"/>
+            <path d="M200,290 L230,325 L242,342"/>
+          </g>
+
+          <!-- Leaves -->
+          <path d="M142,260 Q112,232 124,212 Q150,232 142,260 Z" fill="url(#leafGrad)" stroke="#1b5e20" stroke-width="2"/>
+          <path d="M258,260 Q288,232 276,212 Q250,232 258,260 Z" fill="url(#leafGrad)" stroke="#1b5e20" stroke-width="2"/>
+          <path d="M156,244 Q134,222 146,206 Q164,224 156,244 Z" fill="url(#leafGrad)" stroke="#1b5e20" stroke-width="1.8"/>
+          <path d="M244,244 Q266,222 254,206 Q236,224 244,244 Z" fill="url(#leafGrad)" stroke="#1b5e20" stroke-width="1.8"/>
+
+          <!-- Ribbon Bow -->
+          <path d="M182,298 Q165,285 172,292 Q166,302 182,298" fill="#ff4081" stroke="#ad1457" stroke-width="2"/>
+          <path d="M218,298 Q235,285 228,292 Q234,302 218,298" fill="#ff4081" stroke="#ad1457" stroke-width="2"/>
+          <rect x="185" y="289" width="30" height="18" rx="6" fill="#ff80ab" stroke="#ad1457" stroke-width="2"/>
+          <circle cx="200" cy="298" r="5" fill="#f50057"/>
+
+          <!-- FLOWERS BOUQUET -->
+          <!-- Center Large White Daisy -->
+          <g transform="translate(200,236)">
+            <circle cx="0" cy="-22" r="11" fill="#ffffff" stroke="#e0e0e0" stroke-width="1.5"/>
+            <circle cx="0" cy="22"  r="11" fill="#ffffff" stroke="#e0e0e0" stroke-width="1.5"/>
+            <circle cx="-22" cy="0" r="11" fill="#ffffff" stroke="#e0e0e0" stroke-width="1.5"/>
+            <circle cx="22"  cy="0" r="11" fill="#ffffff" stroke="#e0e0e0" stroke-width="1.5"/>
+            <circle cx="-16" cy="-16" r="10" fill="#ffffff" stroke="#e0e0e0" stroke-width="1.5"/>
+            <circle cx="16"  cy="-16" r="10" fill="#ffffff" stroke="#e0e0e0" stroke-width="1.5"/>
+            <circle cx="-16" cy="16"  r="10" fill="#ffffff" stroke="#e0e0e0" stroke-width="1.5"/>
+            <circle cx="16"  cy="16"  r="10" fill="#ffffff" stroke="#e0e0e0" stroke-width="1.5"/>
+            <circle cx="0" cy="0" r="14" fill="url(#centerGrad)" stroke="#f57f17" stroke-width="2"/>
+          </g>
+
+          <!-- Left Yellow Daisy -->
+          <g transform="translate(156,224)">
+            <circle cx="0"   cy="-16" r="8.5" fill="#ffe082"/>
+            <circle cx="0"   cy="16"  r="8.5" fill="#ffe082"/>
+            <circle cx="-16" cy="0"   r="8.5" fill="#ffe082"/>
+            <circle cx="16"  cy="0"   r="8.5" fill="#ffe082"/>
+            <circle cx="-11" cy="-11" r="7.5" fill="#ffe082"/>
+            <circle cx="11"  cy="-11" r="7.5" fill="#ffe082"/>
+            <circle cx="-11" cy="11"  r="7.5" fill="#ffe082"/>
+            <circle cx="11"  cy="11"  r="7.5" fill="#ffe082"/>
+            <circle cx="0" cy="0" r="10" fill="#ff9800" stroke="#e65100" stroke-width="1.8"/>
+          </g>
+
+          <!-- Right White Daisy -->
+          <g transform="translate(244,224)">
+            <circle cx="0"   cy="-16" r="8.5" fill="#ffffff"/>
+            <circle cx="0"   cy="16"  r="8.5" fill="#ffffff"/>
+            <circle cx="-16" cy="0"   r="8.5" fill="#ffffff"/>
+            <circle cx="16"  cy="0"   r="8.5" fill="#ffffff"/>
+            <circle cx="-11" cy="-11" r="7.5" fill="#ffffff"/>
+            <circle cx="11"  cy="-11" r="7.5" fill="#ffffff"/>
+            <circle cx="-11" cy="11"  r="7.5" fill="#ffffff"/>
+            <circle cx="11"  cy="11"  r="7.5" fill="#ffffff"/>
+            <circle cx="0" cy="0" r="10" fill="url(#centerGrad)" stroke="#f57f17" stroke-width="1.8"/>
+          </g>
+
+          <!-- Top Left Daisy -->
+          <g transform="translate(172,204)">
+            <circle cx="0" cy="-12" r="6" fill="#ffffff"/>
+            <circle cx="0" cy="12"  r="6" fill="#ffffff"/>
+            <circle cx="-12" cy="0" r="6" fill="#ffffff"/>
+            <circle cx="12"  cy="0" r="6" fill="#ffffff"/>
+            <circle cx="-8" cy="-8" r="5" fill="#ffffff"/>
+            <circle cx="8"  cy="-8" r="5" fill="#ffffff"/>
+            <circle cx="0" cy="0" r="7.5" fill="url(#centerGrad)" stroke="#f57f17" stroke-width="1.5"/>
+          </g>
+
+          <!-- Top Right Yellow Daisy -->
+          <g transform="translate(228,204)">
+            <circle cx="0" cy="-12" r="6" fill="#ffe082"/>
+            <circle cx="0" cy="12"  r="6" fill="#ffe082"/>
+            <circle cx="-12" cy="0" r="6" fill="#ffe082"/>
+            <circle cx="12"  cy="0" r="6" fill="#ffe082"/>
+            <circle cx="-8" cy="-8" r="5" fill="#ffe082"/>
+            <circle cx="8"  cy="-8" r="5" fill="#ffe082"/>
+            <circle cx="0" cy="0" r="7.5" fill="#ff9800" stroke="#e65100" stroke-width="1.5"/>
+          </g>
+        </svg>
       </div>
     </div>
   </div>
 
-  <!-- ======= RIGHT: PINK KEYPAD ======= -->
+  <!-- ======= RIGHT: SOLID PINK KEYPAD SIDE ======= -->
   <div class="right">
     <h1 class="title">Enter a passcode</h1>
 
-    <!-- 4 PIN boxes -->
+    <!-- 4 PIN display boxes -->
     <div class="pin-row" id="pinRow">
+      <div class="error-toast" id="errorToast">Incorrect! Try 2910 💕</div>
       <div class="pin-box" data-i="0"></div>
       <div class="pin-box" data-i="1"></div>
       <div class="pin-box" data-i="2"></div>
       <div class="pin-box" data-i="3"></div>
     </div>
 
-    <!-- Phone-style 3×4 keypad -->
+    <!-- Phone-Style 3x4 Number Pad -->
     <div class="keypad" id="keypad">
       <button class="key" data-v="1">1</button>
       <button class="key" data-v="2">2</button>
       <button class="key" data-v="3">3</button>
+      
       <button class="key" data-v="4">4</button>
       <button class="key" data-v="5">5</button>
       <button class="key" data-v="6">6</button>
+      
       <button class="key" data-v="7">7</button>
       <button class="key" data-v="8">8</button>
       <button class="key" data-v="9">9</button>
+      
       <button class="key" data-v="*">*</button>
       <button class="key" data-v="0">0</button>
       <button class="key" data-v="#">#</button>
+    </div>
+
+    <div class="hint-bar">
+      <p class="hint-text">Passcode hint: <strong>2910</strong> 💕</p>
     </div>
   </div>
 
@@ -327,7 +518,7 @@
   <div class="modal-card">
     <div class="modal-icon">💖</div>
     <h2>Passcode Accepted!</h2>
-    <p>Welcome! You've unlocked the cute portal. 🥰✨</p>
+    <p>Welcome! You've entered <strong>2910</strong> and unlocked the cute portal. 🥰✨</p>
     <button class="modal-btn" id="modalClose">Reset & Try Again 💕</button>
   </div>
 </div>
@@ -351,66 +542,87 @@
       const rot = (ang * 180 / Math.PI + 90);
       el.style.setProperty('--rot', rot + 'deg');
       el.style.transform = `translate(-50%,-50%) rotate(${rot}deg)`;
-      el.style.animationDelay = (i * 0.08) + 's';
+      el.style.animationDelay = (i * 0.07) + 's';
       ring.appendChild(el);
     }
   }
   makeHearts();
   window.addEventListener('resize', makeHearts);
 
-  /* ====== IMAGE FALLBACK HANDLER ====== */
-  (function() {
-    const chickImg = document.getElementById('chickImg');
-    const imagePaths = [
-      'cute_chick_flowers.png',
-      'file:///C:/Users/vigne/.gemini/antigravity-ide/brain/d491b869-79cf-47cf-bb57-2714c4dd530b/kawaii_chick_bouquet_final_1785523474472.png',
-      'file:///C:/Users/vigne/.gemini/antigravity-ide/brain/d491b869-79cf-47cf-bb57-2714c4dd530b/cute_chick_flowers_1785522387514.png'
-    ];
-    let idx = 0;
-    chickImg.onerror = function() {
-      idx++;
-      if (idx < imagePaths.length) {
-        chickImg.src = imagePaths[idx];
-      }
-    };
-  })();
-
-  /* ====== PIN LOGIC ====== */
+  /* ====== PIN LOGIC (CORRECT PASSCODE: 2910) ====== */
   (function(){
     let pin = '';
-    const boxes  = document.querySelectorAll('.pin-box');
-    const modal  = document.getElementById('modal');
-    const close  = document.getElementById('modalClose');
+    const CORRECT_PIN = '2910';
+    const boxes = document.querySelectorAll('.pin-box');
+    const pinRow = document.getElementById('pinRow');
+    const errorToast = document.getElementById('errorToast');
+    const modal = document.getElementById('modal');
+    const close = document.getElementById('modalClose');
 
     function refresh(){
-      boxes.forEach((b,i) => b.classList.toggle('filled', i < pin.length));
-      if(pin.length === 4) setTimeout(() => modal.classList.remove('hidden'), 260);
+      boxes.forEach((b, i) => b.classList.toggle('filled', i < pin.length));
+
+      // Validate when 4 digits entered
+      if (pin.length === 4) {
+        if (pin === CORRECT_PIN) {
+          setTimeout(() => {
+            modal.classList.remove('hidden');
+          }, 240);
+        } else {
+          // Incorrect PIN feedback
+          setTimeout(() => {
+            pinRow.classList.add('shake');
+            if (errorToast) errorToast.classList.add('show');
+            setTimeout(() => {
+              pinRow.classList.remove('shake');
+              if (errorToast) errorToast.classList.remove('show');
+              pin = '';
+              refresh();
+            }, 750);
+          }, 180);
+        }
+      }
     }
 
     function push(v){
-      if(pin.length < 4){
+      if (pin.length < 4) {
         pin += v;
         refresh();
-        if(navigator.vibrate) try{ navigator.vibrate(18); }catch(e){}
+        if (navigator.vibrate) try { navigator.vibrate(18); } catch(e) {}
       }
+    }
+
+    function handleBackspace() {
+      if (pin.length > 0) {
+        pin = pin.slice(0, -1);
+        refresh();
+      }
+    }
+
+    function reset() {
+      pin = '';
+      refresh();
+      modal.classList.add('hidden');
     }
 
     document.getElementById('keypad').addEventListener('click', e => {
       const b = e.target.closest('.key');
-      if(b) push(b.dataset.v);
+      if (!b) return;
+      const val = b.dataset.v;
+      if (val === '*') {
+        handleBackspace();
+      } else {
+        push(val);
+      }
     });
 
-    close.addEventListener('click', () => {
-      pin = '';
-      refresh();
-      modal.classList.add('hidden');
-    });
+    close.addEventListener('click', reset);
 
     document.addEventListener('keydown', e => {
-      if(e.key >= '0' && e.key <= '9') push(e.key);
-      else if(e.key === '*' || e.key === '#') push(e.key);
-      else if(e.key === 'Backspace'){ pin = pin.slice(0, -1); refresh(); }
-      else if(e.key === 'Escape'){ pin = ''; refresh(); modal.classList.add('hidden'); }
+      if (e.key >= '0' && e.key <= '9') push(e.key);
+      else if (e.key === '*' || e.key === '#') push(e.key);
+      else if (e.key === 'Backspace') handleBackspace();
+      else if (e.key === 'Escape') reset();
     });
   })();
 </script>
