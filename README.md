@@ -1,23 +1,29 @@
-# The First August 💕
+# 🐥 Kawaii Passcode Webpage & Secret Diary 💖
 
-A beautiful kawaii passcode lock screen webpage with a split-screen design.
+An interactive, cute split-screen web application featuring a pristine chick illustration on the left and a fully functional numeric passcode keypad on the right.
 
-## 🌸 Design
-- **Left side**: Soft green gingham checkered background with a large white oval frame surrounded by a continuous ring of pink hearts. Inside: a cute kawaii yellow chick holding a flower bouquet. Floating pink stars scattered around.
-- **Right side**: Solid bright pink/magenta background with bold white "Enter a passcode" title, 4 white rounded square PIN boxes, and a classic 3x4 phone-style number pad with white circular raised buttons and pink text.
+![Kawaii Passcode Screenshot](assets/left_illustration.jpg)
 
 ## ✨ Features
-- Fully responsive — works beautifully on both mobile and desktop.
-- Kawaii / Sanrio aesthetic with smooth animations.
-- 28 pink hearts arranged in a continuous ellipse ring around the oval frame.
-- Floating pink stars with gentle float animations.
-- White circular keypad buttons with soft 3D raised shadow.
-- Smooth pop-in animation when digits are entered.
-- Physical keyboard support (type digits, Backspace, Escape to reset).
-- Mobile vibration feedback on key presses.
-- SVG vector chick fallback if image is not found.
+- **Split-Screen Design**: High-resolution chick illustration on the left panel with floating sparkle stars overlay.
+- **Interactive Passcode Keypad**:
+  - Deep raspberry pink aesthetic right panel matching the Canva design.
+  - Custom 4x3 keypad grid with digits `1-9`, `*`, `0`, `#` featuring cute underlines.
+  - Interactive passcode slot boxes that fill with pink heart icons `💖`.
+  - Built-in Web Audio API synthesizer generating cute pop keypress sounds, error buzz, and unlock fanfare.
+  - Physical keyboard support (type using numbers, numpad, backspace, and escape).
+- **Secret Unlocked State**:
+  - Unlocks with passcode **`1234`**.
+  - Dynamic celebration confetti animation.
+  - Interactive Secret Diary modal allowing you to write and save notes to `localStorage`.
 
-## 🛠️ Built With
-- **HTML5** — Semantic, accessible structure
-- **CSS3** — Gingham pattern via linear-gradients, CSS animations, responsive layout
-- **Vanilla JavaScript** — Dynamic heart ring generation, keypad interaction, modal handling
+## 🚀 How to Run Locally
+1. Clone this repository or download the source files.
+2. Open `index.html` in any web browser.
+3. Enter passcode **`1234`** on the keypad to unlock the secret diary!
+
+## 🎨 Tech Stack
+- HTML5 & CSS3 (Custom Design System & Modern Flexbox Layout)
+- Vanilla JavaScript (ES6+)
+- Web Audio API (Synthesized Audio Effects)
+- Google Fonts (`Fredoka`, `Short Stack`, `Quicksand`)

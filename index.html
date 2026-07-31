@@ -3,625 +3,99 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Enter a Passcode 💕</title>
+  <title>Kawaii Passcode Lock | Secret Diary</title>
+  
+  <!-- Google Fonts for cute typography -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Quicksand:wght@600;700&display=swap" rel="stylesheet">
-  <style>
-    *, *::before, *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      -webkit-tap-highlight-color: transparent;
-    }
-
-    html, body {
-      width: 100%;
-      height: 100%;
-      overflow: hidden;
-      font-family: 'Fredoka', 'Quicksand', cursive, sans-serif;
-      background: #d8edd5;
-    }
-
-    /* ======================== FULLSCREEN SPLIT (50/50) ======================== */
-    .wrapper {
-      display: flex;
-      width: 100vw;
-      height: 100vh;
-    }
-
-    /* ======================== LEFT: EXACT SAGE PLAID GINGHAM ======================== */
-    .left {
-      width: 50%;
-      height: 100%;
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-      background-color: #dbeed7;
-      background-image: 
-        linear-gradient(90deg, rgba(255, 255, 255, 0.65) 38%, transparent 38%, transparent 62%, rgba(165, 212, 158, 0.45) 62%),
-        linear-gradient(rgba(255, 255, 255, 0.65) 38%, transparent 38%, transparent 62%, rgba(165, 212, 158, 0.45) 62%);
-      background-size: 52px 52px;
-    }
-
-    /* Pink glitter floating stars matching reference */
-    .star {
-      position: absolute;
-      color: #e62b68;
-      font-size: 1.6rem;
-      filter: drop-shadow(0 2px 4px rgba(230, 43, 104, 0.4));
-      pointer-events: none;
-      animation: floatStar 3.2s ease-in-out infinite alternate;
-      z-index: 2;
-    }
-    .s1 { top:7%;  left:9%;   font-size:2.2rem; animation-delay:0s;   }
-    .s2 { top:12%; right:9%;  font-size:1.6rem; animation-delay:.5s;  }
-    .s3 { top:40%; right:6%;  font-size:1.9rem; animation-delay:1s;   }
-    .s4 { bottom:9%; left:9%; font-size:1.8rem; animation-delay:1.5s; }
-    .s5 { bottom:11%; right:10%; font-size:2.1rem; animation-delay:.8s;  }
-    .s6 { top:75%; left:16%;  font-size:1.5rem; animation-delay:1.3s; }
-    .s7 { top:5%;  right:20%; font-size:1.8rem; animation-delay:.2s;  }
-    .s8 { top:46%; left:4%;   font-size:1.6rem; animation-delay:2s;   }
-
-    @keyframes floatStar {
-      0%   { transform: translateY(0) scale(1) rotate(0deg); }
-      100% { transform: translateY(-10px) scale(1.2) rotate(15deg); }
-    }
-
-    /* ======================== OVAL FRAME & HEARTS RING ======================== */
-    .oval-wrap {
-      position: relative;
-      width: clamp(270px, 35vh, 400px);
-      height: clamp(360px, 47vh, 520px);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 5;
-      transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    }
-    .oval-wrap:hover {
-      transform: scale(1.02);
-    }
-
-    /* Continuous Ring of 30 Small Pink/Red Hearts around Oval */
-    .hearts-ring {
-      position: absolute;
-      inset: -18px;
-      pointer-events: none;
-      z-index: 10;
-    }
-
-    .heart-dot {
-      position: absolute;
-      font-size: clamp(0.95rem, 1.35vh, 1.3rem);
-      line-height: 1;
-      filter: drop-shadow(0 2px 4px rgba(220, 30, 70, 0.4));
-      animation: pulseHeart 2.5s ease-in-out infinite alternate;
-    }
-
-    @keyframes pulseHeart {
-      0% { transform: translate(-50%, -50%) rotate(var(--rot)) scale(1); }
-      100% { transform: translate(-50%, -50%) rotate(var(--rot)) scale(1.15); }
-    }
-
-    /* White Oval Frame matching Reference Screenshot */
-    .oval {
-      width: 100%;
-      height: 100%;
-      border-radius: 50% / 50%;
-      background: #ffffff;
-      box-shadow: 
-        0 20px 50px rgba(0, 0, 0, 0.15),
-        inset 0 0 15px rgba(0, 0, 0, 0.02),
-        0 0 0 8px #ffffff;
-      border: 4px solid #ffffff;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-      position: relative;
-    }
-
-    /* Image / Vector Illustration Container */
-    .chick-container {
-      width: 100%;
-      height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .chick-img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    /* ======================== RIGHT: SOLID PINK SIDE ======================== */
-    .right {
-      width: 50%;
-      height: 100%;
-      background: #e02b5a;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 5vh 4vw;
-      gap: clamp(16px, 2.8vh, 32px);
-      position: relative;
-    }
-
-    /* Title at top in white bold text */
-    .title {
-      color: #ffffff;
-      font-size: clamp(1.8rem, 3.2vw, 3.2rem);
-      font-weight: 700;
-      text-align: center;
-      text-shadow: 0 2px 6px rgba(0,0,0,.15);
-      letter-spacing: .3px;
-    }
-
-    /* 4 Empty White Rounded Square Boxes */
-    .pin-row {
-      display: flex;
-      gap: clamp(10px, 1.4vw, 18px);
-      position: relative;
-    }
-
-    .pin-row.shake {
-      animation: shakeX 0.4s ease-in-out;
-    }
-
-    @keyframes shakeX {
-      0%, 100% { transform: translateX(0); }
-      20%, 60% { transform: translateX(-12px); }
-      40%, 80% { transform: translateX(12px); }
-    }
-
-    .pin-box {
-      width: clamp(48px, 6vw, 70px);
-      height: clamp(48px, 6vw, 70px);
-      background: #ffffff;
-      border-radius: 16px;
-      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.16);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: transform .2s cubic-bezier(.175,.885,.32,1.275), box-shadow .2s;
-      position: relative;
-    }
-    .pin-box.filled {
-      transform: scale(1.08);
-      box-shadow: 0 6px 20px rgba(0,0,0,.24);
-    }
-    .pin-box.filled::after {
-      content: '●';
-      color: #e02b5a;
-      font-size: clamp(1.3rem, 2.2vw, 1.8rem);
-      animation: pop .2s cubic-bezier(.175,.885,.32,1.275);
-    }
-    @keyframes pop {
-      0%   { transform: scale(0); opacity: 0; }
-      100% { transform: scale(1); opacity: 1; }
-    }
-
-    /* Error Toast */
-    .error-toast {
-      position: absolute;
-      top: -38px;
-      left: 50%;
-      transform: translateX(-50%) translateY(-5px);
-      background: rgba(0, 0, 0, 0.78);
-      color: #ffffff;
-      padding: 6px 16px;
-      border-radius: 20px;
-      font-size: 0.9rem;
-      font-weight: 600;
-      white-space: nowrap;
-      opacity: 0;
-      transition: all 0.25s ease;
-      pointer-events: none;
-    }
-    .error-toast.show {
-      opacity: 1;
-      transform: translateX(-50%) translateY(0);
-    }
-
-    /* Classic Phone-Style Number Pad (White Circular Raised Buttons) */
-    .keypad {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: clamp(10px, 2vh, 22px) clamp(12px, 1.8vw, 26px);
-      width: 100%;
-      max-width: clamp(220px, 29vw, 370px);
-    }
-
-    .key {
-      width: clamp(58px, 6.4vw, 80px);
-      height: clamp(58px, 6.4vw, 80px);
-      border-radius: 50%;
-      background: #ffffff;
-      border: none;
-      color: #e02b5a;
-      font-family: 'Fredoka', cursive;
-      font-size: clamp(1.5rem, 2.2vw, 2.3rem);
-      font-weight: 700;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto;
-      box-shadow: 0 6px 16px rgba(0,0,0,.18), inset 0 -3px 0 rgba(0,0,0,.09);
-      transition: transform .12s ease, box-shadow .12s ease;
-      outline: none;
-      user-select: none;
-    }
-    .key:hover  { transform: translateY(-2px) scale(1.05); box-shadow: 0 10px 22px rgba(0,0,0,.24), inset 0 -3px 0 rgba(0,0,0,.09); }
-    .key:active { transform: translateY(2px) scale(.96);   box-shadow: 0 2px 6px rgba(0,0,0,.15), inset 0 1px 2px rgba(0,0,0,.12); }
-
-    /* Hint Bar */
-    .hint-bar {
-      margin-top: 4px;
-    }
-    .hint-text {
-      color: rgba(255, 255, 255, 0.9);
-      font-size: 0.92rem;
-      font-weight: 600;
-      text-align: center;
-    }
-
-    /* ======================== MODAL ======================== */
-    .modal-bg {
-      position: fixed; inset: 0;
-      background: rgba(0,0,0,.65);
-      backdrop-filter: blur(6px);
-      display: flex; align-items: center; justify-content: center;
-      z-index: 9999; padding: 20px;
-    }
-    .modal-bg.hidden { display: none !important; }
-    .modal-card {
-      background: #ffffff;
-      border-radius: 26px;
-      padding: 36px 28px;
-      max-width: 380px; width: 100%;
-      text-align: center;
-      box-shadow: 0 22px 44px rgba(0,0,0,.3);
-      animation: mpop .3s cubic-bezier(.175,.885,.32,1.275);
-    }
-    @keyframes mpop { from{transform:scale(.8);opacity:0} to{transform:scale(1);opacity:1} }
-    .modal-icon  { font-size: 3.5rem; margin-bottom: 10px; }
-    .modal-card h2 { color: #e02b5a; font-size: 1.9rem; margin-bottom: 8px; }
-    .modal-card p  { color: #4a5568; font-size: 1.05rem; margin-bottom: 22px; line-height: 1.5; }
-    .modal-btn {
-      background: #e02b5a; color: #ffffff; border: none;
-      padding: 13px 28px; border-radius: 30px;
-      font-family: 'Fredoka', cursive; font-size: 1.1rem; font-weight: 700;
-      cursor: pointer; box-shadow: 0 6px 18px rgba(224,43,90,.35);
-      transition: transform .15s, background .15s;
-    }
-    .modal-btn:hover { transform: scale(1.05); background: #c7224c; }
-
-    /* ======================== MOBILE ======================== */
-    @media (max-width: 700px) {
-      html, body { overflow-y: auto; }
-      .wrapper { flex-direction: column; height: auto; min-height: 100vh; }
-      .left  { width: 100%; height: 62vw; min-height: 270px; }
-      .right { width: 100%; height: auto; flex: 1; padding: 6vw 5vw 10vw; }
-      .oval-wrap { width: 46vw; height: 60vw; max-width: 240px; max-height: 310px; }
-    }
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&family=Fredoka:wght@400;500;600;700&family=Quicksand:wght@600;700&family=Short+Stack&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div class="wrapper">
+  <!-- Main Container -->
+  <div class="app-container">
+    
+    <!-- Left Panel: Constant Illustration -->
+    <div class="left-panel">
+      <div class="illustration-wrapper">
+        <!-- Main pristine illustration -->
+        <img id="chick-image" src="assets/left_illustration.jpg" alt="Kawaii Chick with Flowers" 
+             onerror="this.onerror=null; this.src='file:///C:/Users/vigne/.gemini/antigravity-ide/brain/c7ddded5-8e01-4e89-85b9-a3e9efc9efc8/media__1785527314376.jpg';">
+        
+        <!-- Interactive floating glitter stars overlay -->
+        <div class="stars-overlay" id="stars-overlay"></div>
+      </div>
+    </div>
 
-  <!-- ======= LEFT: EXACT SAGE PLAID GINGHAM + KAWAII OVAL FRAME ======= -->
-  <div class="left">
-    <!-- Pink glitter stars -->
-    <span class="star s1">★</span>
-    <span class="star s2">✦</span>
-    <span class="star s3">★</span>
-    <span class="star s4">✦</span>
-    <span class="star s5">★</span>
-    <span class="star s6">✦</span>
-    <span class="star s7">★</span>
-    <span class="star s8">✦</span>
-
-    <!-- Oval frame with hearts ring -->
-    <div class="oval-wrap">
-      <div class="hearts-ring" id="heartsRing"></div>
-      <div class="oval">
-        <div class="chick-container">
-          <!-- Exact Kawaii Chick holding flowers artwork matching reference screenshot -->
-          <svg class="chick-img" viewBox="0 0 400 500" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" aria-label="Kawaii Chick Holding Flower Bouquet">
-            <defs>
-              <linearGradient id="skyGrad" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stop-color="#edf7ec"/>
-                <stop offset="65%" stop-color="#dcedc8"/>
-                <stop offset="100%" stop-color="#c5e1a5"/>
-              </linearGradient>
-              <radialGradient id="chickBodyGrad" cx="45%" cy="38%" r="60%">
-                <stop offset="0%" stop-color="#fffde7"/>
-                <stop offset="55%" stop-color="#fff59d"/>
-                <stop offset="100%" stop-color="#ffee58"/>
-              </radialGradient>
-              <radialGradient id="flowerCenter" cx="35%" cy="35%" r="60%">
-                <stop offset="0%" stop-color="#ffe082"/>
-                <stop offset="70%" stop-color="#ffa726"/>
-                <stop offset="100%" stop-color="#fb8c00"/>
-              </radialGradient>
-            </defs>
-
-            <!-- Background inside Oval: Soft Meadow & Sky -->
-            <rect width="400" height="500" fill="url(#skyGrad)"/>
-            
-            <!-- Soft Grass Hill at Bottom -->
-            <path d="M-10,380 Q100,340 200,355 Q300,370 410,345 L410,510 L-10,510 Z" fill="#b9f6ca" opacity="0.6"/>
-            <path d="M-10,395 Q150,370 250,385 Q350,395 410,375 L410,510 L-10,510 Z" fill="#a5d6a7"/>
-            <path d="M-10,420 Q120,400 220,415 L410,410 L410,510 L-10,510 Z" fill="#81c784" opacity="0.5"/>
-
-            <!-- Tiny Meadow Flowers on Grass -->
-            <circle cx="70" cy="420" r="4" fill="#ffffff"/><circle cx="70" cy="420" r="1.8" fill="#ffd54f"/>
-            <circle cx="110" cy="440" r="3.5" fill="#ffffff"/><circle cx="110" cy="440" r="1.5" fill="#ffd54f"/>
-            <circle cx="310" cy="415" r="4.5" fill="#ffffff"/><circle cx="310" cy="415" r="2" fill="#ffd54f"/>
-            <circle cx="350" cy="435" r="3.5" fill="#ffffff"/><circle cx="350" cy="435" r="1.5" fill="#ffd54f"/>
-
-            <!-- Soft Chick Shadow -->
-            <ellipse cx="200" cy="392" rx="105" ry="18" fill="rgba(60, 90, 50, 0.15)"/>
-
-            <!-- MAIN KAWAII CHICK CHARACTER (Matching Screenshot) -->
-            <g transform="translate(0, 10)">
-              <!-- Feet (Cute Orange Rounded Bumps) -->
-              <ellipse cx="160" cy="372" rx="24" ry="13" fill="#ff9800" stroke="#5d4037" stroke-width="3.5"/>
-              <ellipse cx="240" cy="372" rx="24" ry="13" fill="#ff9800" stroke="#5d4037" stroke-width="3.5"/>
-
-              <!-- Chubby Egg/Pear Chick Body & Head -->
-              <path d="M200,90 
-                       C275,90 325,145 325,235 
-                       C325,325 275,370 200,370 
-                       C125,370 75,325 75,235 
-                       C75,145 125,90 200,90 Z" 
-                    fill="url(#chickBodyGrad)" 
-                    stroke="#5d4037" 
-                    stroke-width="5" 
-                    stroke-linejoin="round"/>
-
-              <!-- Soft Body Sheen / Highlight -->
-              <ellipse cx="160" cy="145" rx="38" ry="26" fill="rgba(255,255,255,0.48)" transform="rotate(-20,160,145)"/>
-
-              <!-- Cute Feather Crest Tuft -->
-              <path d="M192,92 C192,68 200,62 200,62 C200,62 208,68 208,92" fill="#fff59d" stroke="#5d4037" stroke-width="4"/>
-              <path d="M182,98 C182,76 190,70 190,70 C190,70 198,78 198,100" fill="#fff59d" stroke="#5d4037" stroke-width="3.5"/>
-
-              <!-- Eyes (Kawaii Dark Brown Beads) -->
-              <ellipse cx="168" cy="190" rx="11" ry="14" fill="#3e2723"/>
-              <ellipse cx="232" cy="190" rx="11" ry="14" fill="#3e2723"/>
-              <!-- Eye Highlights -->
-              <circle cx="171" cy="186" r="4" fill="#ffffff"/>
-              <circle cx="235" cy="186" r="4" fill="#ffffff"/>
-
-              <!-- Rosy Blush Cheeks -->
-              <ellipse cx="140" cy="206" rx="16" ry="10" fill="#ff80ab" opacity="0.75"/>
-              <ellipse cx="260" cy="206" rx="16" ry="10" fill="#ff80ab" opacity="0.75"/>
-
-              <!-- Cute Beak -->
-              <path d="M188,198 Q200,214 212,198 Q206,204 200,206 Q194,204 188,198 Z" fill="#ff9800" stroke="#5d4037" stroke-width="3.5"/>
-
-              <!-- Wing Arms Holding Flower Bouquet -->
-              <path d="M102,260 C80,270 95,310 135,305 C150,300 160,285 155,270 C150,255 120,250 102,260 Z" fill="#ffe082" stroke="#5d4037" stroke-width="4.5"/>
-              <path d="M298,260 C320,270 305,310 265,305 C250,300 240,285 245,270 C250,255 280,250 298,260 Z" fill="#ffe082" stroke="#5d4037" stroke-width="4.5"/>
-
-              <!-- FLOWER BOUQUET HELD BY CHICK -->
-              <!-- Green Stems -->
-              <g stroke="#388e3c" stroke-width="4.5" stroke-linecap="round" fill="none">
-                <path d="M200,265 L180,315"/>
-                <path d="M200,265 L200,320"/>
-                <path d="M200,265 L220,315"/>
-              </g>
-
-              <!-- Leaves -->
-              <path d="M165,260 Q140,240 152,225 Q170,242 165,260 Z" fill="#81c784" stroke="#2e7d32" stroke-width="2"/>
-              <path d="M235,260 Q260,240 248,225 Q230,242 235,260 Z" fill="#81c784" stroke="#2e7d32" stroke-width="2"/>
-
-              <!-- Golden-Yellow Daisy (Left) -->
-              <g transform="translate(172, 235)">
-                <circle cx="0" cy="-14" r="7.5" fill="#ffb74d" stroke="#5d4037" stroke-width="1.2"/>
-                <circle cx="0" cy="14"  r="7.5" fill="#ffb74d" stroke="#5d4037" stroke-width="1.2"/>
-                <circle cx="-14" cy="0" r="7.5" fill="#ffb74d" stroke="#5d4037" stroke-width="1.2"/>
-                <circle cx="14"  cy="0" r="7.5" fill="#ffb74d" stroke="#5d4037" stroke-width="1.2"/>
-                <circle cx="-10" cy="-10" r="7" fill="#ffb74d" stroke="#5d4037" stroke-width="1.2"/>
-                <circle cx="10"  cy="-10" r="7" fill="#ffb74d" stroke="#5d4037" stroke-width="1.2"/>
-                <circle cx="-10" cy="10"  r="7" fill="#ffb74d" stroke="#5d4037" stroke-width="1.2"/>
-                <circle cx="10"  cy="10"  r="7" fill="#ffb74d" stroke="#5d4037" stroke-width="1.2"/>
-                <circle cx="0" cy="0" r="9" fill="url(#flowerCenter)" stroke="#5d4037" stroke-width="1.8"/>
-              </g>
-
-              <!-- Soft Pink Daisy (Top Center) -->
-              <g transform="translate(202, 210)">
-                <circle cx="0" cy="-13" r="7" fill="#f8bbd0" stroke="#5d4037" stroke-width="1.2"/>
-                <circle cx="0" cy="13"  r="7" fill="#f8bbd0" stroke="#5d4037" stroke-width="1.2"/>
-                <circle cx="-13" cy="0" r="7" fill="#f8bbd0" stroke="#5d4037" stroke-width="1.2"/>
-                <circle cx="13"  cy="0" r="7" fill="#f8bbd0" stroke="#5d4037" stroke-width="1.2"/>
-                <circle cx="-9" cy="-9" r="6.5" fill="#f8bbd0" stroke="#5d4037" stroke-width="1.2"/>
-                <circle cx="9"  cy="-9" r="6.5" fill="#f8bbd0" stroke="#5d4037" stroke-width="1.2"/>
-                <circle cx="-9" cy="9"  r="6.5" fill="#f8bbd0" stroke="#5d4037" stroke-width="1.2"/>
-                <circle cx="9"  cy="9"  r="6.5" fill="#f8bbd0" stroke="#5d4037" stroke-width="1.2"/>
-                <circle cx="0" cy="0" r="8" fill="#ffe082" stroke="#5d4037" stroke-width="1.8"/>
-              </g>
-
-              <!-- White Daisy (Right) -->
-              <g transform="translate(232, 238)">
-                <circle cx="0" cy="-14" r="7.5" fill="#ffffff" stroke="#5d4037" stroke-width="1.2"/>
-                <circle cx="0" cy="14"  r="7.5" fill="#ffffff" stroke="#5d4037" stroke-width="1.2"/>
-                <circle cx="-14" cy="0" r="7.5" fill="#ffffff" stroke="#5d4037" stroke-width="1.2"/>
-                <circle cx="14"  cy="0" r="7.5" fill="#ffffff" stroke="#5d4037" stroke-width="1.2"/>
-                <circle cx="-10" cy="-10" r="7" fill="#ffffff" stroke="#5d4037" stroke-width="1.2"/>
-                <circle cx="10"  cy="-10" r="7" fill="#ffffff" stroke="#5d4037" stroke-width="1.2"/>
-                <circle cx="-10" cy="10"  r="7" fill="#ffffff" stroke="#5d4037" stroke-width="1.2"/>
-                <circle cx="10"  cy="10"  r="7" fill="#ffffff" stroke="#5d4037" stroke-width="1.2"/>
-                <circle cx="0" cy="0" r="9" fill="url(#flowerCenter)" stroke="#5d4037" stroke-width="1.8"/>
-              </g>
-
-            </g>
-          </svg>
+    <!-- Right Panel: Interactive Passcode Screen -->
+    <div class="right-panel">
+      <div class="passcode-card">
+        
+        <!-- Title Header -->
+        <h1 class="passcode-title">Enter a passcode</h1>
+        
+        <!-- 4 Passcode Input Display Slots -->
+        <div class="slots-container" id="slots-container">
+          <div class="slot" data-index="0"></div>
+          <div class="slot" data-index="1"></div>
+          <div class="slot" data-index="2"></div>
+          <div class="slot" data-index="3"></div>
         </div>
+
+        <!-- Keypad Grid (4x3) -->
+        <div class="keypad-grid" id="keypad-grid">
+          <button class="key-btn" data-val="1"><span class="key-label underline-text">1</span></button>
+          <button class="key-btn" data-val="2"><span class="key-label underline-text">2</span></button>
+          <button class="key-btn" data-val="3"><span class="key-label underline-text">3</span></button>
+          
+          <button class="key-btn" data-val="4"><span class="key-label underline-text">4</span></button>
+          <button class="key-btn" data-val="5"><span class="key-label underline-text">5</span></button>
+          <button class="key-btn" data-val="6"><span class="key-label underline-text">6</span></button>
+          
+          <button class="key-btn" data-val="7"><span class="key-label underline-text">7</span></button>
+          <button class="key-btn" data-val="8"><span class="key-label underline-text">8</span></button>
+          <button class="key-btn" data-val="9"><span class="key-label underline-text">9</span></button>
+          
+          <button class="key-btn action-key" data-val="*"><span class="key-label underline-text">*</span></button>
+          <button class="key-btn" data-val="0"><span class="key-label underline-text">0</span></button>
+          <button class="key-btn action-key" data-val="#"><span class="key-label underline-text">#</span></button>
+        </div>
+
+        <!-- Quick Hint & Reset Controls -->
+        <div class="passcode-footer">
+          <p class="hint-text">💡 Passcode: <strong>1234</strong></p>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Unlocked Secret Modal -->
+  <div class="modal-overlay hidden" id="secret-modal">
+    <div class="secret-diary-card">
+      <button class="close-modal-btn" id="close-modal-btn">&times;</button>
+      <div class="diary-header">
+        <span class="diary-badge">✨ UNLOCKED ✨</span>
+        <h2>My Secret Kawaii Diary 💕</h2>
+        <p class="diary-date" id="current-date-string"></p>
+      </div>
+
+      <div class="diary-content">
+        <div class="chick-avatar">🐣</div>
+        <textarea id="diary-text" placeholder="Write your secret notes, dreams, and thoughts here..."></textarea>
+      </div>
+
+      <div class="diary-actions">
+        <button class="btn btn-save" id="save-diary-btn">💖 Save Note</button>
+        <button class="btn btn-lock" id="lock-app-btn">🔒 Lock Diary</button>
       </div>
     </div>
   </div>
 
-  <!-- ======= RIGHT: SOLID PINK KEYPAD SIDE ======= -->
-  <div class="right">
-    <h1 class="title">Enter a passcode</h1>
-
-    <!-- 4 PIN display boxes -->
-    <div class="pin-row" id="pinRow">
-      <div class="error-toast" id="errorToast">Incorrect! Try 2910 💕</div>
-      <div class="pin-box" data-i="0"></div>
-      <div class="pin-box" data-i="1"></div>
-      <div class="pin-box" data-i="2"></div>
-      <div class="pin-box" data-i="3"></div>
-    </div>
-
-    <!-- Phone-Style 3x4 Number Pad -->
-    <div class="keypad" id="keypad">
-      <button class="key" data-v="1">1</button>
-      <button class="key" data-v="2">2</button>
-      <button class="key" data-v="3">3</button>
-      
-      <button class="key" data-v="4">4</button>
-      <button class="key" data-v="5">5</button>
-      <button class="key" data-v="6">6</button>
-      
-      <button class="key" data-v="7">7</button>
-      <button class="key" data-v="8">8</button>
-      <button class="key" data-v="9">9</button>
-      
-      <button class="key" data-v="*">*</button>
-      <button class="key" data-v="0">0</button>
-      <button class="key" data-v="#">#</button>
-    </div>
-
-    <div class="hint-bar">
-      <p class="hint-text">Passcode hint: <strong>2910</strong> 💕</p>
-    </div>
-  </div>
-
-</div>
-
-<!-- ======= SUCCESS MODAL ======= -->
-<div class="modal-bg hidden" id="modal">
-  <div class="modal-card">
-    <div class="modal-icon">💖</div>
-    <h2>Passcode Accepted!</h2>
-    <p>Welcome! You've entered <strong>2910</strong> and unlocked the cute portal. 🥰✨</p>
-    <button class="modal-btn" id="modalClose">Reset & Try Again 💕</button>
-  </div>
-</div>
-
-<script>
-  /* ====== HEARTS RING (30 Red/Pink Outlined Hearts along Oval) ====== */
-  function makeHearts(){
-    const ring = document.getElementById('heartsRing');
-    if (!ring) return;
-    ring.innerHTML = '';
-    const n = 30;
-    for(let i = 0; i < n; i++){
-      const ang = (i / n) * 2 * Math.PI - Math.PI / 2;
-      const x = 50 + 49 * Math.cos(ang);
-      const y = 50 + 49 * Math.sin(ang);
-      const el = document.createElement('span');
-      el.className = 'heart-dot';
-      el.textContent = '❤️';
-      el.style.left = x + '%';
-      el.style.top  = y + '%';
-      const rot = (ang * 180 / Math.PI + 90);
-      el.style.setProperty('--rot', rot + 'deg');
-      el.style.transform = `translate(-50%,-50%) rotate(${rot}deg)`;
-      el.style.animationDelay = (i * 0.08) + 's';
-      ring.appendChild(el);
-    }
-  }
-  makeHearts();
-  window.addEventListener('resize', makeHearts);
-
-  /* ====== PIN LOGIC (CORRECT PASSCODE: 2910) ====== */
-  (function(){
-    let pin = '';
-    const CORRECT_PIN = '2910';
-    const boxes = document.querySelectorAll('.pin-box');
-    const pinRow = document.getElementById('pinRow');
-    const errorToast = document.getElementById('errorToast');
-    const modal = document.getElementById('modal');
-    const close = document.getElementById('modalClose');
-
-    function refresh(){
-      boxes.forEach((b, i) => b.classList.toggle('filled', i < pin.length));
-
-      // Validate when 4 digits entered
-      if (pin.length === 4) {
-        if (pin === CORRECT_PIN) {
-          setTimeout(() => {
-            modal.classList.remove('hidden');
-          }, 240);
-        } else {
-          // Incorrect PIN feedback
-          setTimeout(() => {
-            pinRow.classList.add('shake');
-            if (errorToast) errorToast.classList.add('show');
-            setTimeout(() => {
-              pinRow.classList.remove('shake');
-              if (errorToast) errorToast.classList.remove('show');
-              pin = '';
-              refresh();
-            }, 750);
-          }, 180);
-        }
-      }
-    }
-
-    function push(v){
-      if (pin.length < 4) {
-        pin += v;
-        refresh();
-        if (navigator.vibrate) try { navigator.vibrate(18); } catch(e) {}
-      }
-    }
-
-    function handleBackspace() {
-      if (pin.length > 0) {
-        pin = pin.slice(0, -1);
-        refresh();
-      }
-    }
-
-    function reset() {
-      pin = '';
-      refresh();
-      modal.classList.add('hidden');
-    }
-
-    document.getElementById('keypad').addEventListener('click', e => {
-      const b = e.target.closest('.key');
-      if (!b) return;
-      const val = b.dataset.v;
-      if (val === '*') {
-        handleBackspace();
-      } else {
-        push(val);
-      }
-    });
-
-    close.addEventListener('click', reset);
-
-    document.addEventListener('keydown', e => {
-      if (e.key >= '0' && e.key <= '9') push(e.key);
-      else if (e.key === '*' || e.key === '#') push(e.key);
-      else if (e.key === 'Backspace') handleBackspace();
-      else if (e.key === 'Escape') reset();
-    });
-  })();
-</script>
+  <!-- Script -->
+  <script src="script.js"></script>
 </body>
 </html>
