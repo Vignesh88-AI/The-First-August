@@ -1,18 +1,23 @@
 # The First August 💕
 
-A romantic secret diary and love portal web application featuring an interactive lock screen, customizable love letters, polaroid memory gallery, 10 reasons why I love you cards, date night requests with playful buttons, and background music synth.
+A beautiful kawaii passcode lock screen webpage with a split-screen design.
 
-## 🌸 Features
-- **Passcode Lock Screen**: Gingham pattern, cute chick illustration frame, and interactive rose-pink dial keypad with customizable PIN.
-- **Interactive Love Letter**: Envelope wax seal opening animation with smooth typewriter text effect.
-- **Polaroid Memory Gallery**: Cute polaroid cards displaying special moments and memories.
-- **10 Reasons Why I Love You**: Interactive 3D flip-cards with sweet messages.
-- **Playful Date Night Request**: Interactive "Yes/No" date proposal with a runaway "No" button and celebration modal.
-- **Background Music & Sound Effects**: Built-in Web Audio API synthesizer for sound effects and romantic melody.
-- **Anniversary Counter**: Dynamic counter tracking days together.
-- **Settings Modal**: Easily personalize recipient name, lock passcode, anniversary date, and custom love letter message.
+## 🌸 Design
+- **Left side**: Soft green gingham checkered background with a large white oval frame surrounded by a continuous ring of pink hearts. Inside: a cute kawaii yellow chick holding a flower bouquet. Floating pink stars scattered around.
+- **Right side**: Solid bright pink/magenta background with bold white "Enter a passcode" title, 4 white rounded square PIN boxes, and a classic 3x4 phone-style number pad with white circular raised buttons and pink text.
+
+## ✨ Features
+- Fully responsive — works beautifully on both mobile and desktop.
+- Kawaii / Sanrio aesthetic with smooth animations.
+- 28 pink hearts arranged in a continuous ellipse ring around the oval frame.
+- Floating pink stars with gentle float animations.
+- White circular keypad buttons with soft 3D raised shadow.
+- Smooth pop-in animation when digits are entered.
+- Physical keyboard support (type digits, Backspace, Escape to reset).
+- Mobile vibration feedback on key presses.
+- SVG vector chick fallback if image is not found.
 
 ## 🛠️ Built With
-- **HTML5** - Semantic layout & accessibility
-- **CSS3** - Custom Gingham grid, glassmorphic header, animations, and responsive layout
-- **JavaScript (ES6+)** - Dynamic DOM manipulation, Web Audio API, and HTML5 Canvas particle physics
+- **HTML5** — Semantic, accessible structure
+- **CSS3** — Gingham pattern via linear-gradients, CSS animations, responsive layout
+- **Vanilla JavaScript** — Dynamic heart ring generation, keypad interaction, modal handling

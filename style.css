@@ -1,23 +1,6 @@
 /* ==========================================================================
-   FOR MY SWEETHEART - CUSTOM ROMANCE WEB APP CSS
+   KAWAII PASSCODE LOCK SCREEN - STYLESHEET
    ========================================================================== */
-
-:root {
-  --primary-pink: #e83a6b;
-  --primary-pink-hover: #c92251;
-  --dark-pink: #a11139;
-  --light-pink: #ffe5ec;
-  --gingham-green: #d6f0d1;
-  --gingham-line: #a6dc9e;
-  --bg-pastel: #fbfefb;
-  --text-dark: #2d3748;
-  --white: #ffffff;
-  --shadow-soft: 0 10px 25px rgba(232, 58, 107, 0.15);
-  --shadow-key: 0 4px 10px rgba(0, 0, 0, 0.12), 0 2px 0 #d12856;
-  --font-bubble: 'Fredoka', 'Quicksand', cursive, sans-serif;
-  --font-handwriting: 'Dancing Script', cursive;
-  --font-body: 'Quicksand', 'Outfit', sans-serif;
-}
 
 * {
   box-sizing: border-box;
@@ -27,15 +10,24 @@
   -webkit-user-select: none;
 }
 
+:root {
+  --bright-pink: #e02b5a;
+  --pink-dark-shadow: #b31b42;
+  --gingham-mint: #d6f4dc;
+  --gingham-check: rgba(158, 228, 178, 0.5);
+  --font-bubble: 'Fredoka', 'Quicksand', cursive, sans-serif;
+  --font-ui: 'Quicksand', sans-serif;
+}
+
 body {
-  font-family: var(--font-body);
-  background: #f4f9f4;
-  color: var(--text-dark);
+  font-family: var(--font-bubble);
+  background-color: #27282d;
+  background-image: radial-gradient(circle at 50% 50%, #32343c 0%, #1f2024 100%);
   min-height: 100vh;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
+  padding: 24px;
   overflow-x: hidden;
 }
 
@@ -43,997 +35,367 @@ body {
   display: none !important;
 }
 
-/* ==========================================================================
-   AUDIO WIDGET CONTROLLER
-   ========================================================================== */
-.audio-widget {
-  position: fixed;
-  top: 15px;
-  right: 15px;
-  z-index: 1000;
-}
-
-.music-toggle {
-  background: rgba(255, 255, 255, 0.9);
-  border: 2px solid var(--primary-pink);
-  border-radius: 30px;
-  padding: 8px 16px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  cursor: pointer;
-  box-shadow: 0 4px 12px rgba(232, 58, 107, 0.2);
-  transition: transform 0.2s ease, background 0.2s ease;
-  font-family: var(--font-bubble);
-  font-weight: 600;
-  color: var(--primary-pink);
-}
-
-.music-toggle:hover {
-  transform: scale(1.05);
-  background: var(--light-pink);
-}
-
-.music-icon {
-  font-size: 1.2rem;
-  animation: spinSlow 4s linear infinite paused;
-}
-
-.music-toggle.playing .music-icon {
-  animation-play-state: running;
-}
-
-@keyframes spinSlow {
-  100% { transform: rotate(360deg); }
-}
-
-/* ==========================================================================
-   LOCK SCREEN MAIN CONTAINER (REPLICA FROM SCREENSHOT)
-   ========================================================================== */
+/* MAIN LOCK SCREEN WRAPPER */
 .lock-screen-wrapper {
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  max-width: 900px;
   display: flex;
-  align-items: center;
   justify-content: center;
-  padding: 20px;
-  background: #2a2a2a;
+  align-items: center;
 }
 
+/* MAIN SPLIT CARD (50/50) */
 .lock-card {
   width: 100%;
-  max-width: 950px;
-  height: 560px;
+  max-width: 860px;
+  height: 520px;
   display: flex;
-  border-radius: 24px;
+  background: #ffffff;
+  border-radius: 30px;
   overflow: hidden;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
-  border: 6px solid #ffffff;
+  box-shadow: 0 25px 55px rgba(0, 0, 0, 0.45), 0 0 0 6px #ffffff;
   position: relative;
 }
 
-/* --------------------------------------------------------------------------
-   LEFT GINGHAM SECTION
-   -------------------------------------------------------------------------- */
-.left-gingham-section {
-  flex: 1.1;
-  position: relative;
-  /* Pastel Green Gingham Pattern using CSS Grids */
-  background-color: #e4f4e2;
+/* ==========================================================================
+   LEFT SIDE: SOFT GREEN GINGHAM & KAWAII OVAL FRAME
+   ========================================================================== */
+.left-side {
+  width: 50%;
+  height: 100%;
+  background-color: var(--gingham-mint);
   background-image: 
-    linear-gradient(90deg, rgba(162, 218, 154, 0.45) 50%, transparent 50%),
-    linear-gradient(rgba(162, 218, 154, 0.45) 50%, transparent 50%);
-  background-size: 44px 44px;
+    linear-gradient(90deg, var(--gingham-check) 50%, transparent 50%),
+    linear-gradient(var(--gingham-check) 50%, transparent 50%);
+  background-size: 34px 34px;
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
 }
 
-/* Glitter Pink Stars */
-.glitter-star {
+/* SCATTERED PINK STARS */
+.pink-star {
   position: absolute;
-  color: #ff3377;
-  font-size: 1.6rem;
-  text-shadow: 
-    0 0 6px #ff6699,
-    0 0 12px #ff99cc,
-    0 0 18px #ffffff;
-  animation: starSparkle 2s infinite ease-in-out alternate;
+  color: #ff5592;
+  font-size: 1.5rem;
+  filter: drop-shadow(0 2px 5px rgba(255, 85, 146, 0.4));
+  animation: floatStar 3.2s ease-in-out infinite alternate;
   pointer-events: none;
-  z-index: 2;
-}
-
-.star-1 { top: 12%; left: 15%; animation-delay: 0s; }
-.star-2 { top: 8%; right: 18%; animation-delay: 0.4s; }
-.star-3 { top: 24%; right: 10%; animation-delay: 0.8s; }
-.star-4 { bottom: 25%; left: 10%; animation-delay: 1.2s; }
-.star-5 { bottom: 10%; left: 18%; animation-delay: 0.3s; }
-.star-6 { bottom: 8%; right: 15%; animation-delay: 0.7s; }
-.star-7 { top: 48%; left: 6%; animation-delay: 1.0s; }
-.star-8 { top: 52%; right: 6%; animation-delay: 0.5s; }
-
-@keyframes starSparkle {
-  0% { transform: scale(0.8) rotate(0deg); opacity: 0.7; }
-  100% { transform: scale(1.25) rotate(20deg); opacity: 1; filter: brightness(1.3); }
-}
-
-/* Oval Picture Frame & Heart Border Ring */
-.oval-frame-container {
-  width: 250px;
-  height: 350px;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   z-index: 3;
 }
 
-.heart-border-ring {
-  position: absolute;
-  inset: -12px;
-  border-radius: 50%;
-  pointer-events: none;
+.star-1 { top: 12%; left: 14%; font-size: 1.7rem; animation-delay: 0s; }
+.star-2 { top: 18%; right: 10%; font-size: 1.3rem; animation-delay: 0.6s; }
+.star-3 { top: 44%; right: 6%; font-size: 1.5rem; animation-delay: 1.2s; }
+.star-4 { bottom: 14%; left: 10%; font-size: 1.4rem; animation-delay: 1.8s; }
+.star-5 { bottom: 18%; right: 14%; font-size: 1.7rem; animation-delay: 0.9s; }
+.star-6 { top: 78%; left: 22%; font-size: 1.2rem; animation-delay: 1.4s; }
+.star-7 { top: 8%; right: 28%; font-size: 1.4rem; animation-delay: 0.3s; }
+.star-8 { top: 50%; left: 7%; font-size: 1.3rem; animation-delay: 2.1s; }
+
+@keyframes floatStar {
+  0% { transform: translateY(0) scale(1) rotate(0deg); }
+  100% { transform: translateY(-7px) scale(1.16) rotate(14deg); }
 }
 
-/* Oval Image Window */
-.oval-image-window {
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  background: #fbfbf5;
-  border: 5px solid #ffffff;
-  box-shadow: 
-    inset 0 0 15px rgba(0, 0, 0, 0.08),
-    0 10px 25px rgba(0, 0, 0, 0.15);
-  overflow: hidden;
+/* CENTRAL OVAL CONTAINER */
+.oval-container {
+  position: relative;
+  width: 255px;
+  height: 340px;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 10px;
+  z-index: 5;
 }
 
-.chick-illustration {
-  width: 100%;
-  height: 100%;
+/* CONTINUOUS CIRCLE OF SMALL PINK HEARTS */
+.hearts-ring {
+  position: absolute;
+  top: -14px;
+  left: -14px;
+  right: -14px;
+  bottom: -14px;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.pink-heart-item {
+  position: absolute;
+  font-size: 1rem;
+  line-height: 1;
+  filter: drop-shadow(0 2px 4px rgba(224, 43, 90, 0.35));
+  transition: transform 0.2s ease;
+}
+
+/* LARGE WHITE OVAL FRAME */
+.white-oval-frame {
+  width: 235px;
+  height: 320px;
+  background: #ffffff;
+  border-radius: 50% / 50%;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12), inset 0 0 20px rgba(0, 0, 0, 0.02);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 16px;
+  border: 5px solid #ffffff;
+  position: relative;
+}
+
+.chick-image {
+  width: 88%;
+  height: 88%;
   object-fit: contain;
-  border-radius: 50%;
-  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.08));
 }
 
-.oval-frame-container:hover .chick-illustration {
-  transform: scale(1.06) rotate(3deg);
-}
-
-/* SVG Chick Fallback Container */
 .chick-svg-fallback {
-  width: 100%;
-  height: 100%;
+  width: 90%;
+  height: 90%;
+  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.08));
 }
 
-/* --------------------------------------------------------------------------
-   RIGHT KEYPAD SECTION (ROSE PINK)
-   -------------------------------------------------------------------------- */
-.right-keypad-section {
-  flex: 0.9;
-  background: linear-gradient(135deg, #e83a6b 0%, #d82355 100%);
-  padding: 35px 30px;
+/* ==========================================================================
+   RIGHT SIDE: SOLID BRIGHT PINK/MAGENTA BACKGROUND & KEYPAD
+   ========================================================================== */
+.right-side {
+  width: 50%;
+  height: 100%;
+  background-color: var(--bright-pink);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  color: var(--white);
+  padding: 35px 25px;
   position: relative;
 }
 
 .passcode-title {
+  color: #ffffff;
   font-family: var(--font-bubble);
-  font-size: 2rem;
+  font-size: 2.15rem;
   font-weight: 700;
-  letter-spacing: 0.5px;
-  margin-bottom: 24px;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+  margin-bottom: 22px;
+  letter-spacing: 0.3px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.12);
+  text-align: center;
 }
 
-/* PIN Display Slots */
-.pin-display-container {
+/* 4 EMPTY WHITE ROUNDED SQUARE BOXES */
+.passcode-boxes {
   display: flex;
   gap: 14px;
   margin-bottom: 28px;
 }
 
 .pin-box {
-  width: 44px;
-  height: 44px;
-  border: 3px solid rgba(255, 255, 255, 0.9);
-  border-radius: 10px;
-  background: rgba(255, 255, 255, 0.1);
+  width: 52px;
+  height: 52px;
+  background: #ffffff;
+  border-radius: 14px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.16);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.5rem;
-  transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-.pin-box.filled {
-  background: var(--white);
-  box-shadow: 0 0 12px rgba(255, 255, 255, 0.6);
-  transform: scale(1.08);
+  transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.2s ease;
+  position: relative;
 }
 
 .pin-box.filled::after {
-  content: '❤️';
-  font-size: 1.3rem;
-  animation: popIn 0.2s ease forwards;
+  content: '●';
+  color: var(--bright-pink);
+  font-size: 1.5rem;
+  animation: popIn 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.pin-box.filled {
+  transform: scale(1.06);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.22);
 }
 
 @keyframes popIn {
-  0% { transform: scale(0.2); opacity: 0; }
-  80% { transform: scale(1.2); }
+  0% { transform: scale(0); opacity: 0; }
   100% { transform: scale(1); opacity: 1; }
 }
 
-/* Shake animation for invalid PIN */
-.pin-display-container.shake {
-  animation: shakeX 0.4s ease-in-out;
-}
-
-@keyframes shakeX {
-  0%, 100% { transform: translateX(0); }
-  20%, 60% { transform: translateX(-12px); }
-  40%, 80% { transform: translateX(12px); }
-}
-
-.error-msg-toast {
-  position: absolute;
-  top: 95px;
-  background: rgba(0, 0, 0, 0.7);
-  color: #fff;
-  padding: 6px 14px;
-  border-radius: 20px;
-  font-size: 0.85rem;
-  font-weight: 600;
-  opacity: 0;
-  transform: translateY(-10px);
-  transition: all 0.3s ease;
-  pointer-events: none;
-}
-
-.error-msg-toast.show {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* 3x4 Dial Pad Keypad Grid */
+/* CLASSIC PHONE-STYLE NUMBER PAD */
 .keypad-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 16px 20px;
+  gap: 16px 22px;
   width: 100%;
-  max-width: 250px;
+  max-width: 275px;
 }
 
+/* WHITE CIRCULAR BUTTONS WITH SOFT SHADOW & RAISED FEEL */
 .key-btn {
-  width: 60px;
-  height: 60px;
-  margin: 0 auto;
+  width: 65px;
+  height: 65px;
   border-radius: 50%;
+  background: #ffffff;
   border: none;
-  background: var(--white);
-  cursor: pointer;
+  color: var(--bright-pink);
+  font-family: var(--font-bubble);
+  font-size: 1.75rem;
+  font-weight: 700;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-  transition: all 0.15s ease;
+  cursor: pointer;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.18), inset 0 -3px 0 rgba(0, 0, 0, 0.08);
+  transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.12s ease;
+  margin: 0 auto;
   outline: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .key-btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
-  background: #fff0f3;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.24), inset 0 -3px 0 rgba(0, 0, 0, 0.08);
 }
 
 .key-btn:active {
-  transform: translateY(2px);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-}
-
-.key-num {
-  font-family: var(--font-bubble);
-  font-size: 1.7rem;
-  font-weight: 700;
-  color: #d11d4d;
-  /* Red underline under numbers matching reference screenshot */
-  text-decoration: underline;
-  text-decoration-thickness: 2.5px;
-  text-underline-offset: 3px;
-}
-
-.action-key .key-num {
-  text-decoration: none;
-  font-size: 1.4rem;
-}
-
-.hint-bar {
-  margin-top: 18px;
-}
-
-.hint-btn {
-  background: transparent;
-  border: 1.5px dashed rgba(255, 255, 255, 0.7);
-  color: var(--white);
-  padding: 5px 14px;
-  border-radius: 15px;
-  font-size: 0.85rem;
-  font-family: var(--font-body);
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.hint-btn:hover {
-  background: rgba(255, 255, 255, 0.2);
-  border-style: solid;
+  transform: translateY(2px) scale(0.95);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15), inset 0 1px 2px rgba(0, 0, 0, 0.12);
 }
 
 /* ==========================================================================
-   UNLOCKED ROMANTIC PORTAL
+   MODAL DIALOG (SUCCESS CELEBRATION)
    ========================================================================== */
-.unlocked-portal-wrapper {
-  width: 100vw;
-  min-height: 100vh;
-  background: linear-gradient(135deg, #fff5f7 0%, #ffe3ec 100%);
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  z-index: 10;
-}
-
-#canvasParticles {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  pointer-events: none;
-  z-index: 1;
-}
-
-/* Header & Nav */
-.portal-header {
-  background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(10px);
-  padding: 15px 30px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  box-shadow: 0 4px 20px rgba(232, 58, 107, 0.1);
-  position: sticky;
-  top: 0;
-  z-index: 20;
-}
-
-.header-brand {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.header-brand h2 {
-  font-family: var(--font-bubble);
-  color: var(--primary-pink);
-  font-size: 1.4rem;
-}
-
-.heart-pulse {
-  font-size: 1.5rem;
-  animation: pulse 1.5s infinite alternate;
-}
-
-@keyframes pulse {
-  0% { transform: scale(1); }
-  100% { transform: scale(1.25); }
-}
-
-.portal-nav {
-  display: flex;
-  gap: 10px;
-}
-
-.nav-tab {
-  background: transparent;
-  border: none;
-  padding: 8px 16px;
-  border-radius: 20px;
-  font-family: var(--font-bubble);
-  font-size: 0.95rem;
-  font-weight: 600;
-  color: #666;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.nav-tab:hover {
-  background: var(--light-pink);
-  color: var(--primary-pink);
-}
-
-.nav-tab.active {
-  background: var(--primary-pink);
-  color: var(--white);
-  box-shadow: 0 4px 12px rgba(232, 58, 107, 0.3);
-}
-
-.settings-tab-btn {
-  font-size: 1.1rem;
-  padding: 8px 12px;
-}
-
-/* Main Content Wrapper */
-.portal-content {
-  flex: 1;
-  max-width: 1100px;
-  width: 100%;
-  margin: 30px auto;
-  padding: 0 20px;
-  position: relative;
-  z-index: 10;
-}
-
-.tab-page {
-  display: none;
-  animation: fadeIn 0.4s ease forwards;
-}
-
-.tab-page.active {
-  display: block;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-/* --------------------------------------------------------------------------
-   TAB 1: LOVE LETTER (ENVELOPE)
-   -------------------------------------------------------------------------- */
-.letter-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 450px;
-}
-
-.envelope-wrapper {
-  cursor: pointer;
-  perspective: 1000px;
-}
-
-.envelope {
-  width: 320px;
-  height: 220px;
-  background: #f8c0d0;
-  border-radius: 12px;
-  position: relative;
-  box-shadow: 0 15px 35px rgba(232, 58, 107, 0.25);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: transform 0.3s ease;
-}
-
-.envelope:hover {
-  transform: translateY(-5px) rotate(-1deg);
-}
-
-.envelope-flap {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 0;
-  height: 0;
-  border-left: 160px solid transparent;
-  border-right: 160px solid transparent;
-  border-top: 130px solid #f29bb4;
-  transform-origin: top;
-  transition: transform 0.6s ease;
-  z-index: 5;
-}
-
-.envelope-pocket {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 0;
-  height: 0;
-  border-left: 160px solid #f3a6be;
-  border-right: 160px solid #f3a6be;
-  border-bottom: 110px solid #e88fa9;
-  border-radius: 0 0 12px 12px;
-  z-index: 4;
-}
-
-.wax-seal {
-  position: absolute;
-  z-index: 10;
-  width: 70px;
-  height: 70px;
-  background: #d82355;
-  border-radius: 50%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  border: 3px solid #ffccd5;
-  transition: transform 0.2s ease;
-}
-
-.wax-seal:hover {
-  transform: scale(1.1);
-}
-
-.wax-seal small {
-  font-size: 0.65rem;
-  font-weight: 700;
-  font-family: var(--font-bubble);
-}
-
-/* Letter Card */
-.letter-card {
-  background: #fffdf9;
-  border: 2px solid #fce3ec;
-  border-radius: 20px;
-  padding: 40px;
-  max-width: 650px;
-  width: 100%;
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
-  position: relative;
-  background-image: linear-gradient(#fffdf9 96%, #f7d6e0 96%);
-  background-size: 100% 32px;
-}
-
-.letter-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 2px dashed #f2b5cb;
-  padding-bottom: 12px;
-  margin-bottom: 20px;
-}
-
-.letter-header h3 {
-  font-family: var(--font-handwriting);
-  font-size: 2.2rem;
-  color: var(--primary-pink);
-}
-
-.letter-date {
-  font-family: var(--font-body);
-  font-size: 0.9rem;
-  color: #888;
-}
-
-.letter-body {
-  font-family: var(--font-handwriting);
-  font-size: 1.8rem;
-  line-height: 2rem;
-  color: #333;
-  min-height: 180px;
-}
-
-.letter-footer {
-  margin-top: 30px;
-  text-align: right;
-  font-family: var(--font-handwriting);
-  font-size: 2rem;
-  color: var(--primary-pink);
-}
-
-/* --------------------------------------------------------------------------
-   TAB 2: POLAROID GALLERY
-   -------------------------------------------------------------------------- */
-.gallery-header-text {
-  text-align: center;
-  margin-bottom: 30px;
-}
-
-.gallery-header-text h2 {
-  font-family: var(--font-bubble);
-  font-size: 2rem;
-  color: var(--primary-pink);
-}
-
-.polaroid-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 30px;
-  justify-items: center;
-}
-
-.polaroid-card {
-  background: var(--white);
-  padding: 15px 15px 25px 15px;
-  border-radius: 8px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-  transform: rotate(calc(var(--rotation, 0) * 1deg));
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  cursor: pointer;
-  max-width: 260px;
-  width: 100%;
-}
-
-.polaroid-card:hover {
-  transform: scale(1.06) rotate(0deg) !important;
-  box-shadow: 0 18px 35px rgba(232, 58, 107, 0.25);
-  z-index: 5;
-}
-
-.polaroid-img-box {
-  width: 100%;
-  height: 200px;
-  background: #f0f0f0;
-  border-radius: 4px;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.polaroid-img-box img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.polaroid-caption {
-  margin-top: 15px;
-  font-family: var(--font-handwriting);
-  font-size: 1.5rem;
-  text-align: center;
-  color: #444;
-}
-
-/* --------------------------------------------------------------------------
-   TAB 3: 10 REASONS WHY I LOVE YOU
-   -------------------------------------------------------------------------- */
-.reasons-header {
-  text-align: center;
-  margin-bottom: 30px;
-}
-
-.reasons-header h2 {
-  font-family: var(--font-bubble);
-  font-size: 2rem;
-  color: var(--primary-pink);
-}
-
-.reasons-cards-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 20px;
-}
-
-.reason-card {
-  perspective: 1000px;
-  height: 160px;
-  cursor: pointer;
-}
-
-.reason-inner {
-  width: 100%;
-  height: 100%;
-  position: relative;
-  transform-style: preserve-3d;
-  transition: transform 0.6s cubic-bezier(0.4, 0.2, 0.2, 1);
-}
-
-.reason-card.flipped .reason-inner {
-  transform: rotateY(180deg);
-}
-
-.reason-front, .reason-back {
-  position: absolute;
-  inset: 0;
-  backface-visibility: hidden;
-  border-radius: 16px;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-}
-
-.reason-front {
-  background: var(--white);
-  border: 2px solid var(--light-pink);
-}
-
-.reason-front .reason-num {
-  font-family: var(--font-bubble);
-  font-size: 1.2rem;
-  color: var(--primary-pink);
-  font-weight: 700;
-}
-
-.reason-front .reason-icon {
-  font-size: 2.5rem;
-  margin-top: 8px;
-}
-
-.reason-back {
-  background: linear-gradient(135deg, #e83a6b 0%, #ff6b8b 100%);
-  color: var(--white);
-  transform: rotateY(180deg);
-  font-family: var(--font-body);
-  font-size: 1rem;
-  font-weight: 600;
-  line-height: 1.4;
-}
-
-/* --------------------------------------------------------------------------
-   TAB 4: DATE REQUEST (PLAYFUL BUTTONS)
-   -------------------------------------------------------------------------- */
-.date-request-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 450px;
-}
-
-.date-card {
-  background: var(--white);
-  border-radius: 24px;
-  padding: 45px 35px;
-  max-width: 550px;
-  width: 100%;
-  text-align: center;
-  box-shadow: 0 15px 35px rgba(232, 58, 107, 0.15);
-  border: 4px solid var(--light-pink);
-  position: relative;
-}
-
-.cute-chick-icon {
-  font-size: 3.5rem;
-  margin-bottom: 15px;
-}
-
-.date-card h2 {
-  font-family: var(--font-bubble);
-  font-size: 1.8rem;
-  color: var(--primary-pink);
-  margin-bottom: 15px;
-}
-
-.date-card p {
-  color: #666;
-  font-size: 1.05rem;
-  margin-bottom: 30px;
-  line-height: 1.5;
-}
-
-.date-buttons-wrapper {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 20px;
-  min-height: 70px;
-  position: relative;
-}
-
-.yes-btn {
-  background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
-  color: var(--white);
-  border: none;
-  padding: 14px 28px;
-  border-radius: 30px;
-  font-family: var(--font-bubble);
-  font-size: 1.2rem;
-  font-weight: 700;
-  cursor: pointer;
-  box-shadow: 0 6px 18px rgba(34, 197, 94, 0.3);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.yes-btn:hover {
-  transform: scale(1.1);
-  box-shadow: 0 10px 25px rgba(34, 197, 94, 0.4);
-}
-
-.no-btn {
-  background: #ef4444;
-  color: var(--white);
-  border: none;
-  padding: 12px 24px;
-  border-radius: 30px;
-  font-family: var(--font-bubble);
-  font-size: 1rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.15s ease;
-  position: relative;
-}
-
-/* --------------------------------------------------------------------------
-   FOOTER COUNTDOWN
-   -------------------------------------------------------------------------- */
-.portal-footer {
-  text-align: center;
-  padding: 20px;
-  background: rgba(255, 255, 255, 0.6);
-  border-top: 1px solid var(--light-pink);
-}
-
-.countdown-badge {
-  font-family: var(--font-bubble);
-  color: var(--dark-pink);
-  font-size: 1rem;
-}
-
-/* --------------------------------------------------------------------------
-   MODALS & OVERLAYS
-   -------------------------------------------------------------------------- */
 .modal-overlay {
   position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(5px);
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(6px);
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 2000;
+  z-index: 9999;
   padding: 20px;
 }
 
 .modal-card {
-  background: var(--white);
-  border-radius: 20px;
-  max-width: 480px;
-  width: 100%;
-  padding: 25px;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
-  animation: popInModal 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-@keyframes popInModal {
-  from { transform: scale(0.8); opacity: 0; }
-  to { transform: scale(1); opacity: 1; }
-}
-
-.modal-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 20px;
-  border-bottom: 2px solid var(--light-pink);
-  padding-bottom: 10px;
-}
-
-.modal-header h3 {
-  font-family: var(--font-bubble);
-  color: var(--primary-pink);
-}
-
-.close-modal-btn {
-  background: none;
-  border: none;
-  font-size: 1.8rem;
-  cursor: pointer;
-  color: #999;
-}
-
-.form-group {
-  margin-bottom: 16px;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.form-group label {
-  font-weight: 600;
-  font-size: 0.9rem;
-  color: #444;
-}
-
-.form-group input, .form-group textarea {
-  width: 100%;
-  padding: 10px 14px;
-  border: 1.5px solid #ddd;
-  border-radius: 10px;
-  font-family: var(--font-body);
-  outline: none;
-}
-
-.form-group input:focus, .form-group textarea:focus {
-  border-color: var(--primary-pink);
-  box-shadow: 0 0 0 3px rgba(232, 58, 107, 0.15);
-}
-
-.save-settings-btn, .close-modal-btn-full {
-  width: 100%;
-  background: var(--primary-pink);
-  color: var(--white);
-  border: none;
-  padding: 12px;
-  border-radius: 12px;
-  font-family: var(--font-bubble);
-  font-size: 1.05rem;
-  font-weight: 700;
-  cursor: pointer;
-  transition: background 0.2s ease;
-}
-
-.save-settings-btn:hover, .close-modal-btn-full:hover {
-  background: var(--primary-pink-hover);
-}
-
-.hint-card-modal, .celebration-card {
-  text-align: center;
+  background: #ffffff;
+  border-radius: 24px;
   padding: 35px 25px;
+  max-width: 380px;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  animation: modalPop 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-.hint-icon, .celebration-emoji {
+@keyframes modalPop {
+  0% { transform: scale(0.8); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.modal-icon {
   font-size: 3.5rem;
   margin-bottom: 12px;
 }
 
-.hint-card-modal p, .celebration-card p {
-  margin: 15px 0 25px 0;
-  color: #555;
+.modal-card h2 {
+  color: var(--bright-pink);
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+}
+
+.modal-card p {
+  color: #4a5568;
+  font-family: var(--font-ui);
+  font-size: 1.05rem;
+  margin-bottom: 24px;
   line-height: 1.5;
 }
 
+.modal-btn {
+  background: var(--bright-pink);
+  color: #ffffff;
+  border: none;
+  padding: 14px 28px;
+  border-radius: 30px;
+  font-family: var(--font-bubble);
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 6px 18px rgba(224, 43, 90, 0.35);
+  transition: transform 0.15s ease, background 0.15s ease;
+}
+
+.modal-btn:hover {
+  transform: scale(1.05);
+  background: #c7224c;
+}
+
 /* ==========================================================================
-   RESPONSIVE DESIGN FOR MOBILE & TABLETS
+   RESPONSIVE LAYOUT FOR MOBILE DEVICES
    ========================================================================== */
 @media (max-width: 768px) {
+  body {
+    padding: 12px;
+  }
+
   .lock-card {
     flex-direction: column;
     height: auto;
-    max-height: 90vh;
-    overflow-y: auto;
+    max-width: 400px;
+    border-radius: 26px;
   }
 
-  .left-gingham-section {
-    padding: 30px 15px;
+  .left-side {
+    width: 100%;
+    height: 270px;
+    padding: 20px;
   }
 
-  .oval-frame-container {
-    width: 180px;
+  .right-side {
+    width: 100%;
+    height: auto;
+    padding: 28px 20px 32px 20px;
+  }
+
+  .oval-container {
+    width: 190px;
     height: 250px;
   }
 
-  .right-keypad-section {
-    padding: 25px 20px;
+  .white-oval-frame {
+    width: 175px;
+    height: 235px;
   }
 
   .passcode-title {
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     margin-bottom: 16px;
   }
 
-  .portal-header {
-    flex-direction: column;
+  .passcode-boxes {
     gap: 12px;
-    padding: 12px 15px;
+    margin-bottom: 22px;
   }
 
-  .portal-nav {
-    flex-wrap: wrap;
-    justify-content: center;
+  .pin-box {
+    width: 46px;
+    height: 46px;
+    border-radius: 12px;
   }
 
-  .letter-card {
-    padding: 25px 20px;
+  .keypad-grid {
+    gap: 12px 18px;
+    max-width: 240px;
   }
 
-  .letter-body {
-    font-size: 1.4rem;
+  .key-btn {
+    width: 58px;
+    height: 58px;
+    font-size: 1.5rem;
   }
 }

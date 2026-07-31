@@ -3,246 +3,129 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>For My Sweetheart 💕 | Secret Diary & Love Portal</title>
-  <!-- Google Fonts: Fredoka for cute bubble text, Quicksand for UI, Dancing Script for handwritten letter -->
+  <title>Enter a Passcode | Kawaii Portal</title>
+  <!-- Google Fonts: Fredoka for rounded bubble text, Quicksand for clean UI -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Fredoka:wght@400;500;600;700&family=Outfit:wght@400;500;600;700&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <!-- BACKGROUND MUSIC / AUDIO CONTROLLER -->
-  <div class="audio-widget" id="audioWidget" title="Click for Music">
-    <button class="music-toggle" id="musicToggleBtn" aria-label="Toggle Romantic Music">
-      <span class="music-icon">🎵</span>
-      <span class="music-text">Play Music</span>
-    </button>
-  </div>
-
-  <!-- PASSCODE LOCK SCREEN (MAIN REPLICA FROM SCREENSHOT) -->
-  <div class="lock-screen-wrapper" id="lockScreen">
+  <!-- MAIN LOCK SCREEN CONTAINER -->
+  <div class="lock-screen-wrapper">
     <div class="lock-card">
       
-      <!-- LEFT SECTION: Gingham grid, pink glitter stars, oval frame with chick illustration -->
-      <div class="left-gingham-section">
-        <!-- Glitter Stars Decorations -->
-        <div class="glitter-star star-1">★</div>
-        <div class="glitter-star star-2">★</div>
-        <div class="glitter-star star-3">★</div>
-        <div class="glitter-star star-4">★</div>
-        <div class="glitter-star star-5">★</div>
-        <div class="glitter-star star-6">★</div>
-        <div class="glitter-star star-7">★</div>
-        <div class="glitter-star star-8">★</div>
+      <!-- LEFT SIDE: Soft Green Gingham Background with Oval Chick Frame & Scattered Pink Stars -->
+      <div class="left-side">
+        <!-- Scattered Floating Pink Stars -->
+        <div class="pink-star star-1">★</div>
+        <div class="pink-star star-2">✦</div>
+        <div class="pink-star star-3">★</div>
+        <div class="pink-star star-4">✦</div>
+        <div class="pink-star star-5">★</div>
+        <div class="pink-star star-6">✦</div>
+        <div class="pink-star star-7">★</div>
+        <div class="pink-star star-8">✦</div>
 
-        <!-- Central Oval Picture Frame with Heart Border -->
-        <div class="oval-frame-container">
-          <div class="heart-border-ring" id="heartRing"></div>
-          <div class="oval-image-window" id="ovalWindow">
+        <!-- Central Oval Container -->
+        <div class="oval-container">
+          
+          <!-- Continuous Circle of Small Pink Hearts -->
+          <div class="hearts-ring" id="heartsRing"></div>
+
+          <!-- White Oval Frame -->
+          <div class="white-oval-frame">
             <img src="cute_chick_flowers.png" 
-                 alt="Cute Chick Holding Flowers" 
-                 class="chick-illustration"
+                 alt="Cute Kawaii Chick with Flower Bouquet" 
+                 class="chick-image" 
                  id="chickImg"
-                 onerror="this.onerror=null; this.parentElement.innerHTML=getChickSvgFallback();">
+                 onerror="this.style.display='none'; document.getElementById('chickSvgFallback').style.display='block';">
+            
+            <!-- Crisp SVG Vector Fallback -->
+            <svg id="chickSvgFallback" class="chick-svg-fallback" viewBox="0 0 300 300" style="display:none;" aria-label="Cute Chick Holding Flowers">
+              <g transform="translate(0, 5)">
+                <ellipse cx="120" cy="265" rx="16" ry="8" fill="#ff9e3b" />
+                <ellipse cx="180" cy="265" rx="16" ry="8" fill="#ff9e3b" />
+                <ellipse cx="150" cy="165" rx="95" ry="105" fill="#ffe770" stroke="#7a5522" stroke-width="4" />
+                <path d="M142,62 Q150,42 158,62 Q166,45 170,66" fill="none" stroke="#7a5522" stroke-width="4" stroke-linecap="round" />
+                <ellipse cx="108" cy="168" rx="15" ry="10" fill="#ffb3c6" opacity="0.85" />
+                <ellipse cx="192" cy="168" rx="15" ry="10" fill="#ffb3c6" opacity="0.85" />
+                <ellipse cx="125" cy="148" rx="7" ry="9" fill="#2d221e" />
+                <ellipse cx="175" cy="148" rx="7" ry="9" fill="#2d221e" />
+                <circle cx="127" cy="145" r="2.5" fill="#ffffff" />
+                <circle cx="177" cy="145" r="2.5" fill="#ffffff" />
+                <path d="M138,158 Q150,174 162,158 Z" fill="#ff9426" stroke="#7a5522" stroke-width="3" />
+                <path d="M90,195 Q70,170 95,155 Q110,180 90,195 Z" fill="#78ca87" stroke="#3b7a48" stroke-width="3" />
+                <path d="M210,195 Q230,170 205,155 Q190,180 210,195 Z" fill="#78ca87" stroke="#3b7a48" stroke-width="3" />
+                <path d="M140,225 L160,225" stroke="#489e5a" stroke-width="6" stroke-linecap="round" />
+                <ellipse cx="150" cy="225" rx="14" ry="9" fill="#a6e3b8" stroke="#3b7a48" stroke-width="3" />
+                <g transform="translate(150, 195)">
+                  <circle cx="0" cy="0" r="16" fill="#ffffff" stroke="#7a5522" stroke-width="3" />
+                  <circle cx="-14" cy="0" r="8" fill="#ffffff" />
+                  <circle cx="14" cy="0" r="8" fill="#ffffff" />
+                  <circle cx="0" cy="-14" r="8" fill="#ffffff" />
+                  <circle cx="0" cy="14" r="8" fill="#ffffff" />
+                  <circle cx="0" cy="0" r="9" fill="#ffc83b" stroke="#7a5522" stroke-width="2" />
+                </g>
+                <g transform="translate(118, 185)">
+                  <circle cx="0" cy="0" r="12" fill="#ffdd55" stroke="#7a5522" stroke-width="2.5" />
+                  <circle cx="0" cy="0" r="6" fill="#e88b23" />
+                </g>
+                <g transform="translate(182, 185)">
+                  <circle cx="0" cy="0" r="12" fill="#ffffff" stroke="#7a5522" stroke-width="2.5" />
+                  <circle cx="0" cy="0" r="6" fill="#ffc83b" />
+                </g>
+                <path d="M85,185 Q110,215 130,205" fill="none" stroke="#7a5522" stroke-width="4" stroke-linecap="round" />
+                <path d="M215,185 Q190,215 170,205" fill="none" stroke="#7a5522" stroke-width="4" stroke-linecap="round" />
+              </g>
+            </svg>
           </div>
         </div>
       </div>
 
-      <!-- RIGHT SECTION: Bright Rose Pink Keypad Panel -->
-      <div class="right-keypad-section">
+      <!-- RIGHT SIDE: Solid Bright Pink/Magenta Background with Keypad -->
+      <div class="right-side">
         <h1 class="passcode-title">Enter a passcode</h1>
 
-        <!-- PIN Display Slots -->
-        <div class="pin-display-container" id="pinDisplay">
+        <!-- 4 Empty White Rounded Square Boxes -->
+        <div class="passcode-boxes" id="passcodeBoxes">
           <div class="pin-box" data-index="0"></div>
           <div class="pin-box" data-index="1"></div>
           <div class="pin-box" data-index="2"></div>
           <div class="pin-box" data-index="3"></div>
         </div>
 
-        <div class="error-msg-toast" id="errorToast">Incorrect passcode! Try again 💕</div>
-
-        <!-- Dial Pad 3x4 Grid -->
+        <!-- Classic Phone-Style Number Pad (White Circular Raised Buttons) -->
         <div class="keypad-grid" id="keypadGrid">
-          <button class="key-btn" data-key="1"><span class="key-num">1</span></button>
-          <button class="key-btn" data-key="2"><span class="key-num">2</span></button>
-          <button class="key-btn" data-key="3"><span class="key-num">3</span></button>
-          <button class="key-btn" data-key="4"><span class="key-num">4</span></button>
-          <button class="key-btn" data-key="5"><span class="key-num">5</span></button>
-          <button class="key-btn" data-key="6"><span class="key-num">6</span></button>
-          <button class="key-btn" data-key="7"><span class="key-num">7</span></button>
-          <button class="key-btn" data-key="8"><span class="key-num">8</span></button>
-          <button class="key-btn" data-key="9"><span class="key-num">9</span></button>
-          <button class="key-btn action-key" data-key="*"><span class="key-num">⌫</span></button>
-          <button class="key-btn" data-key="0"><span class="key-num">0</span></button>
-          <button class="key-btn action-key" data-key="#"><span class="key-num">💡</span></button>
-        </div>
-
-        <div class="hint-bar">
-          <button class="hint-btn" id="hintBtn">Need a Hint?</button>
+          <button class="key-btn" data-val="1">1</button>
+          <button class="key-btn" data-val="2">2</button>
+          <button class="key-btn" data-val="3">3</button>
+          
+          <button class="key-btn" data-val="4">4</button>
+          <button class="key-btn" data-val="5">5</button>
+          <button class="key-btn" data-val="6">6</button>
+          
+          <button class="key-btn" data-val="7">7</button>
+          <button class="key-btn" data-val="8">8</button>
+          <button class="key-btn" data-val="9">9</button>
+          
+          <button class="key-btn symbol-btn" data-val="*">*</button>
+          <button class="key-btn" data-val="0">0</button>
+          <button class="key-btn symbol-btn" data-val="#">#</button>
         </div>
       </div>
 
     </div>
   </div>
 
-  <!-- UNLOCKED MAIN ROMANTIC PORTAL (APPEARS AFTER PASSCODE ENTRY) -->
-  <div class="unlocked-portal-wrapper hidden" id="unlockedPortal">
-    
-    <!-- Canvas for Floating Hearts & Confetti -->
-    <canvas id="canvasParticles"></canvas>
-
-    <!-- Top Navigation Bar -->
-    <header class="portal-header">
-      <div class="header-brand">
-        <span class="heart-pulse">💖</span>
-        <h2 id="portalGreeting">Welcome My Love!</h2>
-      </div>
-      <nav class="portal-nav">
-        <button class="nav-tab active" data-tab="tab-letter">💌 Love Letter</button>
-        <button class="nav-tab" data-tab="tab-gallery">📸 Our Memories</button>
-        <button class="nav-tab" data-tab="tab-reasons">✨ 10 Reasons</button>
-        <button class="nav-tab" data-tab="tab-date">🌹 Date Request</button>
-        <button class="nav-tab settings-tab-btn" id="openSettingsBtn" title="Customize Settings">⚙️</button>
-      </nav>
-    </header>
-
-    <!-- Main Content Tabs -->
-    <main class="portal-content">
-      
-      <!-- TAB 1: LOVE LETTER -->
-      <section class="tab-page active" id="tab-letter">
-        <div class="letter-container">
-          <div class="envelope-wrapper" id="envelopeWrapper">
-            <div class="envelope">
-              <div class="envelope-flap" id="envelopeFlap"></div>
-              <div class="envelope-pocket"></div>
-              <div class="wax-seal" id="waxSeal">
-                <span>💌</span>
-                <small>Click to Open</small>
-              </div>
-            </div>
-          </div>
-
-          <div class="letter-card hidden" id="letterCard">
-            <div class="letter-header">
-              <h3>To My Dearest <span class="custom-gf-name">Girlfriend</span>,</h3>
-              <span class="letter-date" id="letterDate">Today & Always</span>
-            </div>
-            <div class="letter-body">
-              <p id="typedLetterContent"></p>
-            </div>
-            <div class="letter-footer">
-              <p>Forever and always yours,</p>
-              <h4 id="letterSignoff">Your Biggest Fan ❤️</h4>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- TAB 2: POLAROID MEMORY GALLERY -->
-      <section class="tab-page" id="tab-gallery">
-        <div class="gallery-container">
-          <div class="gallery-header-text">
-            <h2>Our Sweetest Moments 📸</h2>
-            <p>Every second with you is a memory I treasure forever.</p>
-          </div>
-          <div class="polaroid-grid" id="polaroidGrid">
-            <!-- Dynamic Polaroid Cards inserted by JS -->
-          </div>
-        </div>
-      </section>
-
-      <!-- TAB 3: 10 REASONS WHY I LOVE YOU -->
-      <section class="tab-page" id="tab-reasons">
-        <div class="reasons-container">
-          <div class="reasons-header">
-            <h2>10 Reasons Why I Love You 💕</h2>
-            <p>Click on each card to reveal why you're so special!</p>
-          </div>
-          <div class="reasons-cards-grid" id="reasonsGrid">
-            <!-- Cards rendered dynamically -->
-          </div>
-        </div>
-      </section>
-
-      <!-- TAB 4: DATE NIGHT / VALENTINE REQUEST -->
-      <section class="tab-page" id="tab-date">
-        <div class="date-request-container">
-          <div class="date-card">
-            <div class="cute-chick-icon">🐥🌸</div>
-            <h2>Will You Go On A Special Date With Me?</h2>
-            <p>I have planned an unforgettable day filled with sweet surprises, your favorite food, and endless hugs! ✨</p>
-            
-            <div class="date-buttons-wrapper">
-              <button class="yes-btn" id="yesBtn">YES! ABSOLUTELY! 🥰💖</button>
-              <button class="no-btn" id="noBtn">No 😢</button>
-            </div>
-          </div>
-        </div>
-      </section>
-
-    </main>
-
-    <!-- FOOTER COUNTDOWN -->
-    <footer class="portal-footer">
-      <div class="countdown-badge">
-        <span>⏳ Anniversary Counter: </span>
-        <strong id="anniversaryCountdown">Calculating days together...</strong>
-      </div>
-    </footer>
-
-  </div>
-
-  <!-- SETTINGS MODAL -->
-  <div class="modal-overlay hidden" id="settingsModal">
+  <!-- SUCCESS UNLOCKED CELEBRATION MODAL -->
+  <div class="modal-overlay hidden" id="successModal">
     <div class="modal-card">
-      <div class="modal-header">
-        <h3>⚙️ Personalize Your Webpage</h3>
-        <button class="close-modal-btn" id="closeSettingsBtn">&times;</button>
-      </div>
-      <div class="modal-body">
-        <div class="form-group">
-          <label for="inputGfName">Girlfriend's Name / Nickname:</label>
-          <input type="text" id="inputGfName" placeholder="e.g. Cutie / Princess / Sarah">
-        </div>
-        <div class="form-group">
-          <label for="inputPasscode">Secret Lock Passcode (4 digits):</label>
-          <input type="text" id="inputPasscode" maxlength="4" placeholder="e.g. 1234 or anniversary date">
-        </div>
-        <div class="form-group">
-          <label for="inputAnniversary">Anniversary Date (YYYY-MM-DD):</label>
-          <input type="date" id="inputAnniversary">
-        </div>
-        <div class="form-group">
-          <label for="inputLoveMessage">Custom Love Letter Message:</label>
-          <textarea id="inputLoveMessage" rows="4" placeholder="Write your heartfelt message here..."></textarea>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button class="save-settings-btn" id="saveSettingsBtn">Save & Apply 💕</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- HINT MODAL -->
-  <div class="modal-overlay hidden" id="hintModal">
-    <div class="modal-card hint-card-modal">
-      <div class="hint-icon">🔑</div>
-      <h3>Passcode Hint</h3>
-      <p id="hintText">The default passcode is <strong>1234</strong>! Try entering 1-2-3-4 on the keypad 💕</p>
-      <button class="close-modal-btn-full" id="closeHintBtn">Got It!</button>
-    </div>
-  </div>
-
-  <!-- CELEBRATION MODAL FOR YES BUTTON -->
-  <div class="modal-overlay hidden" id="celebrationModal">
-    <div class="modal-card celebration-card">
-      <div class="celebration-emoji">🎉🥳💖</div>
-      <h2>YAYYYY! IT'S A DATE! 😍</h2>
-      <p>You've made me the happiest person in the entire world! Get ready for the best date ever! 🌹✨</p>
-      <button class="close-modal-btn-full" id="closeCelebrationBtn">Can't Wait! 🥰</button>
+      <div class="modal-icon">💖</div>
+      <h2>Passcode Accepted!</h2>
+      <p>Welcome! You've unlocked the cute passcode screen. 🥰✨</p>
+      <button class="modal-btn" id="closeSuccessBtn">Reset & Try Again 💕</button>
     </div>
   </div>
 
