@@ -19,6 +19,11 @@ document.addEventListener('DOMContentLoaded', () => {
   const diaryTextarea = document.getElementById('diary-text');
   const currentDateString = document.getElementById('current-date-string');
   const starsOverlay = document.getElementById('stars-overlay');
+  
+  // Image & Fallback Elements
+  const chickImage = document.getElementById('chick-image');
+  const svgFallback = document.getElementById('svg-fallback');
+  const imageFileInput = document.getElementById('image-file-input');
 
   // Set today's date in diary
   if (currentDateString) {
@@ -35,6 +40,60 @@ document.addEventListener('DOMContentLoaded', () => {
   const savedNote = localStorage.getItem('kawaii_secret_note');
   if (savedNote && diaryTextarea) {
     diaryTextarea.value = savedNote;
+  }
+
+  // --------------------------------------------------------------------------
+  // Image Handling & Fallback System
+  // --------------------------------------------------------------------------
+  const candidateImageUrls = [
+    localStorage.getItem('kawaii_custom_image'),
+    'assets/left_illustration.jpg',
+    'left_illustration.jpg',
+    'media__1785527314376.jpg'
+  ].filter(Boolean);
+
+  let currentImageIdx = 0;
+
+  function tryNextImage() {
+    if (currentImageIdx < candidateImageUrls.length) {
+      const url = candidateImageUrls[currentImageIdx++];
+      chickImage.src = url;
+    } else {
+      // If all image files fail, hide broken img tag and keep SVG fallback
+      chickImage.classList.add('hidden-img');
+      if (svgFallback) svgFallback.style.display = 'flex';
+    }
+  }
+
+  if (chickImage) {
+    chickImage.onload = () => {
+      chickImage.classList.remove('hidden-img');
+      if (svgFallback) svgFallback.style.display = 'none';
+    };
+
+    chickImage.onerror = () => {
+      tryNextImage();
+    };
+
+    tryNextImage();
+  }
+
+  // Custom Image File Picker
+  if (imageFileInput) {
+    imageFileInput.addEventListener('change', (e) => {
+      const file = e.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = (evt) => {
+          const dataUrl = evt.target.result;
+          chickImage.src = dataUrl;
+          chickImage.classList.remove('hidden-img');
+          if (svgFallback) svgFallback.style.display = 'none';
+          localStorage.setItem('kawaii_custom_image', dataUrl);
+        };
+        reader.readAsDataURL(file);
+      }
+    });
   }
 
   // --------------------------------------------------------------------------

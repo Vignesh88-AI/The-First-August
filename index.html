@@ -18,14 +18,90 @@
   <div class="app-container">
     
     <!-- Left Panel: Constant Illustration -->
-    <div class="left-panel">
+    <div class="left-panel" id="left-panel">
+      
+      <!-- Seamless Background & Image Wrapper -->
       <div class="illustration-wrapper">
-        <!-- Main pristine illustration -->
-        <img id="chick-image" src="assets/left_illustration.jpg" alt="Kawaii Chick with Flowers" 
-             onerror="this.onerror=null; this.src='file:///C:/Users/vigne/.gemini/antigravity-ide/brain/c7ddded5-8e01-4e89-85b9-a3e9efc9efc8/media__1785527314376.jpg';">
-        
-        <!-- Interactive floating glitter stars overlay -->
+        <!-- SVG Vector Fallback Illustration (Guarantees visual display out of the box) -->
+        <div class="svg-chick-container" id="svg-fallback">
+          <svg viewBox="0 0 500 650" class="chick-svg-art">
+            <!-- Background Plaid Grid overlay -->
+            <defs>
+              <pattern id="plaidPattern" width="60" height="60" patternUnits="userSpaceOnUse">
+                <rect width="60" height="60" fill="#e2ebdc"/>
+                <rect width="30" height="60" fill="#d0dfc8" opacity="0.5"/>
+                <rect width="60" height="30" fill="#c3d7ba" opacity="0.5"/>
+                <line x1="0" y1="15" x2="60" y2="15" stroke="#ffffff" stroke-width="2" opacity="0.7"/>
+                <line x1="15" y1="0" x2="15" y2="60" stroke="#ffffff" stroke-width="2" opacity="0.7"/>
+              </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#plaidPattern)"/>
+            
+            <!-- Glitter Stars -->
+            <text x="70" y="80" font-size="28" fill="#e63973">★</text>
+            <text x="410" y="60" font-size="24" fill="#e63973">★</text>
+            <text x="430" y="240" font-size="26" fill="#e63973">★</text>
+            <text x="50" y="380" font-size="28" fill="#e63973">★</text>
+            <text x="420" y="460" font-size="25" fill="#e63973">★</text>
+            <text x="100" y="580" font-size="26" fill="#e63973">★</text>
+            <text x="320" y="600" font-size="24" fill="#e63973">★</text>
+
+            <!-- Center Oval Heart Badge -->
+            <g transform="translate(250, 325)">
+              <!-- Outer Brown Frame -->
+              <ellipse rx="150" ry="210" fill="#ffffff" stroke="#7a4b37" stroke-width="6"/>
+              
+              <!-- Pink Hearts Border Loop -->
+              <ellipse rx="138" ry="195" fill="none" stroke="#e8899e" stroke-width="8" stroke-dasharray="12, 10"/>
+              
+              <!-- Inner White Shield -->
+              <ellipse rx="126" ry="180" fill="#ffffff"/>
+              
+              <!-- Yellow Chick Body -->
+              <ellipse cx="0" cy="30" rx="90" ry="85" fill="#fce592"/>
+              <ellipse cx="0" cy="-30" rx="75" ry="70" fill="#fce592"/>
+              
+              <!-- Blush Cheeks -->
+              <ellipse cx="-45" cy="-25" rx="14" ry="9" fill="#ffaab8" opacity="0.8"/>
+              <ellipse cx="45" cy="-25" rx="14" ry="9" fill="#ffaab8" opacity="0.8"/>
+              
+              <!-- Cute Eyes -->
+              <circle cx="-30" cy="-35" r="5" fill="#54372b"/>
+              <circle cx="30" cy="-35" r="5" fill="#54372b"/>
+              
+              <!-- Orange Beak -->
+              <polygon points="-8,-28 8,-28 0,-20" fill="#f09236"/>
+              
+              <!-- Little Feet -->
+              <ellipse cx="-40" cy="100" rx="20" ry="12" fill="#f09236"/>
+              <ellipse cx="40" cy="100" rx="20" ry="12" fill="#f09236"/>
+
+              <!-- Flowers in Hands -->
+              <g transform="translate(35, 0)">
+                <!-- Stems -->
+                <path d="M -15,40 Q -5,10 10,-20" stroke="#689f38" stroke-width="4" fill="none"/>
+                <!-- Yellow Daisy -->
+                <circle cx="15" cy="-20" r="14" fill="#fbc02d"/>
+                <circle cx="15" cy="-20" r="6" fill="#e65100"/>
+                <!-- Pink Daisy -->
+                <circle cx="-5" cy="-5" r="14" fill="#f48fb1"/>
+                <circle cx="-5" cy="-5" r="6" fill="#f57f17"/>
+              </g>
+            </g>
+          </svg>
+        </div>
+
+        <!-- Main Image Element (Loaded if asset exists or chosen) -->
+        <img id="chick-image" class="hidden-img" alt="Kawaii Chick with Flowers">
+
+        <!-- Interactive Floating Glitter Stars Overlay -->
         <div class="stars-overlay" id="stars-overlay"></div>
+
+        <!-- Optional Image Upload Control on Hover -->
+        <div class="upload-badge" id="upload-badge" title="Click to choose custom image file">
+          <span>📷 Select Image</span>
+          <input type="file" id="image-file-input" accept="image/*">
+        </div>
       </div>
     </div>
 
@@ -63,7 +139,7 @@
           <button class="key-btn action-key" data-val="#"><span class="key-label underline-text">#</span></button>
         </div>
 
-        <!-- Quick Hint & Reset Controls -->
+        <!-- Quick Hint -->
         <div class="passcode-footer">
           <p class="hint-text">💡 Passcode: <strong>1234</strong></p>
         </div>
