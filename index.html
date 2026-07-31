@@ -3,87 +3,69 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Happy Girlfriend Day 💕</title>
-  
-  <!-- Google Fonts -->
+  <title>Happy Girlfriend Day</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Quicksand:wght@600;700&family=Short+Stack&display=swap" rel="stylesheet">
-  
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Short+Stack&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <!-- Main Container -->
-  <div class="app-container">
-    
-    <!-- Left Panel: Constant Illustration -->
+  <!-- LANDING SCREEN -->
+  <div class="screen" id="screen-lock">
+
+    <!-- LEFT: Illustration -->
     <div class="left-panel">
-      <div class="illustration-wrapper">
-        <img id="chick-image" src="assets/left_illustration.jpg" alt="Kawaii Chick with Flowers">
-      </div>
+      <img src="assets/left_illustration.jpg" alt="Girlfriend Day" id="hero-img">
     </div>
 
-    <!-- Right Panel: Interactive Passcode Screen -->
+    <!-- RIGHT: Passcode -->
     <div class="right-panel">
-      <div class="passcode-card">
-        
-        <!-- Title Header -->
+      <div class="passcode-wrap">
+
         <h1 class="passcode-title">Enter a passcode</h1>
-        
-        <!-- 4 Passcode Input Display Slots -->
-        <div class="slots-container" id="slots-container">
-          <div class="slot" data-index="0"></div>
-          <div class="slot" data-index="1"></div>
-          <div class="slot" data-index="2"></div>
-          <div class="slot" data-index="3"></div>
+
+        <div class="slots" id="slots">
+          <div class="slot"></div>
+          <div class="slot"></div>
+          <div class="slot"></div>
+          <div class="slot"></div>
         </div>
 
-        <!-- Keypad Grid (4x3) -->
-        <div class="keypad-grid" id="keypad-grid">
-          <button class="key-btn" data-val="1"><span class="key-label underline-text">1</span></button>
-          <button class="key-btn" data-val="2"><span class="key-label underline-text">2</span></button>
-          <button class="key-btn" data-val="3"><span class="key-label underline-text">3</span></button>
-          
-          <button class="key-btn" data-val="4"><span class="key-label underline-text">4</span></button>
-          <button class="key-btn" data-val="5"><span class="key-label underline-text">5</span></button>
-          <button class="key-btn" data-val="6"><span class="key-label underline-text">6</span></button>
-          
-          <button class="key-btn" data-val="7"><span class="key-label underline-text">7</span></button>
-          <button class="key-btn" data-val="8"><span class="key-label underline-text">8</span></button>
-          <button class="key-btn" data-val="9"><span class="key-label underline-text">9</span></button>
-          
-          <button class="key-btn action-key" data-val="*"><span class="key-label underline-text">*</span></button>
-          <button class="key-btn" data-val="0"><span class="key-label underline-text">0</span></button>
-          <button class="key-btn action-key" data-val="#"><span class="key-label underline-text">#</span></button>
+        <div class="pad">
+          <button class="key" data-v="1">1</button>
+          <button class="key" data-v="2">2</button>
+          <button class="key" data-v="3">3</button>
+          <button class="key" data-v="4">4</button>
+          <button class="key" data-v="5">5</button>
+          <button class="key" data-v="6">6</button>
+          <button class="key" data-v="7">7</button>
+          <button class="key" data-v="8">8</button>
+          <button class="key" data-v="9">9</button>
+          <button class="key sym" data-v="*">*</button>
+          <button class="key" data-v="0">0</button>
+          <button class="key sym" data-v="#">#</button>
         </div>
 
       </div>
     </div>
-
   </div>
 
-  <!-- Unlocked Message Modal -->
-  <div class="modal-overlay hidden" id="secret-modal">
-    <div class="secret-diary-card">
-      <button class="close-modal-btn" id="close-modal-btn">&times;</button>
-      <div class="diary-header">
-        <span class="diary-badge">Happy Girlfriend Day</span>
-        <h2>A message just for you</h2>
-        <p class="diary-date" id="current-date-string"></p>
+  <!-- UNLOCKED SCREEN -->
+  <div class="screen hidden" id="screen-message">
+    <div class="message-card">
+      <div class="msg-top-label">Happy Girlfriend Day</div>
+      <h2 class="msg-heading">A message just for you</h2>
+      <p class="msg-date" id="msg-date"></p>
+      <div class="msg-body">
+        <p>Happy Girlfriend Day, my love!</p>
+        <p>Every moment with you is a gift I never take for granted. Thank you for being the most wonderful person in my life. I love you more than words can say.</p>
+        <p class="msg-sign">— Always yours</p>
       </div>
-
-      <div class="diary-content">
-        <textarea id="diary-text" placeholder="Loading your special message..."></textarea>
-      </div>
-
-      <div class="diary-actions">
-        <button class="btn btn-lock" id="lock-app-btn">Close</button>
-      </div>
+      <button class="btn-close" id="btn-close">Close</button>
     </div>
   </div>
 
-  <!-- Script -->
   <script src="script.js"></script>
 </body>
 </html>
